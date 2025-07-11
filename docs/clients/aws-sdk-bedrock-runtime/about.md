@@ -1,0 +1,1 @@
+--8<-- "clients/aws-sdk-bedrock-runtime/README.md"

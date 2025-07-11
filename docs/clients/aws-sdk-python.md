@@ -1,0 +1,1 @@
+--8<-- "clients/aws-sdk-python/README.md"

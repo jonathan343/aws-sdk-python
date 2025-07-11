@@ -1,0 +1,1 @@
+::: aws_sdk_bedrock_runtime.client
