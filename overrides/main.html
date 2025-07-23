@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block announce %}
+  <style>
+    .md-banner__inner {
+      margin: 0.25rem auto !important;
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=warning" />
+  <div style="display: flex;align-items: center;">
+    <span class="material-symbols-outlined">warning</span>This project is in an experimental state and should not be used in production!
+  </div>
+{% endblock %}
