@@ -77,7 +77,7 @@
                     "aws.auth#sigv4",
                     "smithy.api#httpBearerAuth"
                 ],
-                "smithy.api#documentation": "<p>Describes the API operations for running inference using Amazon Bedrock models.</p>",
+                "smithy.api#documentation": "<p>testing Describes the API operations for running inference using Amazon Bedrock models.</p>",
                 "smithy.api#httpBearerAuth": {},
                 "smithy.api#title": "Amazon Bedrock Runtime",
                 "smithy.rules#endpointRuleSet": {
