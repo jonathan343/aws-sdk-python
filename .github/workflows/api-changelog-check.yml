@@ -45,7 +45,7 @@ jobs:
             valid_entry_found=false
             for file in "$changelog_dir"/*.json; do
               [ -e "$file" ] || continue
-              if jq -e '.type and .description' "$file" > /dev/null 2>&1; then
+              if jq -e '.type == "api-change" and .description' "$file" > /dev/null 2>&1; then
                 valid_entry_found=true
                 break
               fi
@@ -60,7 +60,7 @@ jobs:
             printf "::error::Missing changelog entries for the following services:%b\n" "$missing_changelogs"
             echo ""
             echo "Please add a changelog entry in clients/aws-sdk-<service>/.changes/next-release/ for each modified model."
-            echo "Entry must be a JSON file with 'type' and 'description' fields."
+            echo "Entry must be a JSON file with 'type: \"api-change\"' and 'description' fields."
             exit 1
           fi
 
