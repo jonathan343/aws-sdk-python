@@ -52,7 +52,7 @@
                 }
             },
             "traits": {
-                "smithy.api#documentation": "<p>A list of possible alternative transcriptions for the input audio. Each alternative may contain\n      one or more of <code>Items</code>, <code>Entities</code>, or <code>Transcript</code>.</p>"
+                "smithy.api#documentation": "<p>testing A list of possible alternative transcriptions for the input audio. Each alternative may contain\n      one or more of <code>Items</code>, <code>Entities</code>, or <code>Transcript</code>.</p>"
             }
         },
         "com.amazonaws.transcribestreaming#AlternativeList": {
