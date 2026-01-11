@@ -18,11 +18,12 @@ jobs:
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Get changed model files
         id: changed-models
         run: |
-          changed_models=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'codegen/aws-models/*.json' | xargs -I {} basename {} .json)
+          changed_models=$(git diff --name-only origin/${GITHUB_BASE_REF}...HEAD -- 'codegen/aws-models/*.json' | xargs -I {} basename {} .json)
           echo "models<<EOF" >> $GITHUB_OUTPUT
           echo "$changed_models" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -54,7 +55,7 @@ jobs:
             if [ "$valid_entry_found" = false ]; then
               missing_changelogs="${missing_changelogs}\n  - ${service} (no valid changelog entry in ${changelog_dir})"
             fi
-          done <<< "${{ steps.changed-models.outputs.models }}"
+          done <<< "${STEPS_CHANGED_MODELS_OUTPUTS_MODELS}"
 
           if [ -n "$missing_changelogs" ]; then
             printf "::error::Missing changelog entries for the following services:%b\n" "$missing_changelogs"
@@ -65,3 +66,5 @@ jobs:
           fi
 
           echo "All modified models have corresponding changelog entries."
+        env:
+          STEPS_CHANGED_MODELS_OUTPUTS_MODELS: ${{ steps.changed-models.outputs.models }}
