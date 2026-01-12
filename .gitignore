@@ -1,0 +1,19 @@
+# macOS system files
+.DS_Store
+
+# MkDocs build artifacts
+site/
+docs/SUMMARY.md
+docs/clients/
+**/docs/client/
+
+# Virtual environments
+.venv
+venv
+
+# Caches
+__pycache__/
+.ruff_cache/
+
+# Dependency lock file for uv
+uv.lock
