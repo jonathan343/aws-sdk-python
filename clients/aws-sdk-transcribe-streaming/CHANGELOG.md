@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.8.0
+
+### API Changes
+* This release adds a new optional TranscriptFormat parameter to the Amazon Transcribe streaming API, letting customers select spoken or written form for numeric and formatted output.
+
+### Enhancements
+* Re-generated with smithy-python 0.4.0
+
+### Dependencies
+* Bump `smithy-aws-core` from `~=0.7.0` to `~=0.8.0`.
+* Bump `smithy-core` from `~=0.6.0` to `~=0.7.0`.
+
 ## v0.7.0
 
 ### Enhancements

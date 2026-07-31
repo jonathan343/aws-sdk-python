@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.8.0
+
+### API Changes
+* Added support for mid-conversation tool changes in the Amazon Bedrock Converse and ConverseStream APIs.
+
+### Enhancements
+* Re-generated with smithy-python 0.4.0
+
+### Dependencies
+* Bump `smithy-aws-core` from `~=0.7.0` to `~=0.8.0`.
+* Bump `smithy-core` from `~=0.6.0` to `~=0.7.0`.
+
 ## v0.7.0
 
 ### API Changes
