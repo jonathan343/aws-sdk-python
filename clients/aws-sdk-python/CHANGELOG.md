@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.8.0
+
+### Dependencies
+* Allow service clients to use newer compatible patch releases within the same minor version.
+* Add support for the following clients:
+  * aws_sdk_connecthealth
+  * aws_sdk_lex_runtime_v2
+  * aws_sdk_polly
+  * aws_sdk_qbusiness
+* Bump `aws-sdk-bedrock-runtime` from `~=0.7.0` to `~=0.8.0`.
+* Bump `aws-sdk-connecthealth` from `~=0.7.0` to `~=0.8.0`.
+* Bump `aws-sdk-lex-runtime-v2` from `~=0.7.0` to `~=0.8.0`.
+* Bump `aws-sdk-polly` from `~=0.7.0` to `~=0.8.0`.
+* Bump `aws-sdk-qbusiness` from `~=0.7.0` to `~=0.8.0`.
+* Bump `aws-sdk-sagemaker-runtime-http2` from `~=0.7.0` to `~=0.8.0`.
+* Bump `aws-sdk-transcribe-streaming` from `~=0.7.0` to `~=0.8.0`.
+
 ## v0.7.0
 
 ### Dependencies
