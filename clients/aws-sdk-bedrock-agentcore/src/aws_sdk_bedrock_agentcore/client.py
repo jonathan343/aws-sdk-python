@@ -40,6 +40,7 @@ from .models import (
     CreatePaymentSessionOutput,
     DELETE_AB_TEST,
     DELETE_BATCH_EVALUATION,
+    DELETE_CAPACITY_PROVIDER_SESSION,
     DELETE_EVENT,
     DELETE_MEMORY_RECORD,
     DELETE_PAYMENT_INSTRUMENT,
@@ -49,6 +50,8 @@ from .models import (
     DeleteABTestOutput,
     DeleteBatchEvaluationInput,
     DeleteBatchEvaluationOutput,
+    DeleteCapacityProviderSessionInput,
+    DeleteCapacityProviderSessionOutput,
     DeleteEventInput,
     DeleteEventOutput,
     DeleteMemoryRecordInput,
@@ -727,6 +730,58 @@ class AsyncBedrockAgentCoreClient:
         call = ClientCall(
             input=input,
             operation=DELETE_BATCH_EVALUATION,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def delete_capacity_provider_session(
+        self,
+        input: DeleteCapacityProviderSessionInput,
+        plugins: list[Plugin] | None = None,
+    ) -> DeleteCapacityProviderSessionOutput:
+        """
+        Deletes a session associated with a capacity provider in Amazon Bedrock
+        AgentCore and makes the session unavailable for further use. To delete a
+        capacity provider session, specify both the capacity provider identifier
+        and the session ID. After you delete a session, you cannot restart it.
+
+        Args:
+            input:
+                An instance of `DeleteCapacityProviderSessionInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `DeleteCapacityProviderSessionOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=DELETE_CAPACITY_PROVIDER_SESSION,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,

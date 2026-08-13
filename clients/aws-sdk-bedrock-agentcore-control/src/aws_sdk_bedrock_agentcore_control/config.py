@@ -27,6 +27,8 @@ from .auth import HTTPAuthSchemeResolver
 from .models import (
     AddDatasetExamplesInput,
     AddDatasetExamplesOutput,
+    BatchPutGatewayRateLimitsInput,
+    BatchPutGatewayRateLimitsOutput,
     CreateAgentRuntimeEndpointInput,
     CreateAgentRuntimeEndpointOutput,
     CreateAgentRuntimeInput,
@@ -37,6 +39,8 @@ from .models import (
     CreateBrowserOutput,
     CreateBrowserProfileInput,
     CreateBrowserProfileOutput,
+    CreateCapacityProviderInput,
+    CreateCapacityProviderOutput,
     CreateCodeInterpreterInput,
     CreateCodeInterpreterOutput,
     CreateConfigurationBundleInput,
@@ -49,6 +53,8 @@ from .models import (
     CreateEvaluatorOutput,
     CreateGatewayInput,
     CreateGatewayOutput,
+    CreateGatewayRateLimitInput,
+    CreateGatewayRateLimitOutput,
     CreateGatewayRuleInput,
     CreateGatewayRuleOutput,
     CreateGatewayTargetInput,
@@ -89,6 +95,8 @@ from .models import (
     DeleteBrowserOutput,
     DeleteBrowserProfileInput,
     DeleteBrowserProfileOutput,
+    DeleteCapacityProviderInput,
+    DeleteCapacityProviderOutput,
     DeleteCodeInterpreterInput,
     DeleteCodeInterpreterOutput,
     DeleteConfigurationBundleInput,
@@ -101,6 +109,8 @@ from .models import (
     DeleteEvaluatorOutput,
     DeleteGatewayInput,
     DeleteGatewayOutput,
+    DeleteGatewayRateLimitInput,
+    DeleteGatewayRateLimitOutput,
     DeleteGatewayRuleInput,
     DeleteGatewayRuleOutput,
     DeleteGatewayTargetInput,
@@ -143,6 +153,8 @@ from .models import (
     GetBrowserOutput,
     GetBrowserProfileInput,
     GetBrowserProfileOutput,
+    GetCapacityProviderInput,
+    GetCapacityProviderOutput,
     GetCodeInterpreterInput,
     GetCodeInterpreterOutput,
     GetConfigurationBundleInput,
@@ -155,6 +167,8 @@ from .models import (
     GetEvaluatorOutput,
     GetGatewayInput,
     GetGatewayOutput,
+    GetGatewayRateLimitInput,
+    GetGatewayRateLimitOutput,
     GetGatewayRuleInput,
     GetGatewayRuleOutput,
     GetGatewayTargetInput,
@@ -199,6 +213,8 @@ from .models import (
     GetWorkloadIdentityOutput,
     ListAgentRuntimeEndpointsInput,
     ListAgentRuntimeEndpointsOutput,
+    ListAgentRuntimeVersionsByCapacityProviderInput,
+    ListAgentRuntimeVersionsByCapacityProviderOutput,
     ListAgentRuntimeVersionsInput,
     ListAgentRuntimeVersionsOutput,
     ListAgentRuntimesInput,
@@ -209,6 +225,8 @@ from .models import (
     ListBrowserProfilesOutput,
     ListBrowsersInput,
     ListBrowsersOutput,
+    ListCapacityProvidersInput,
+    ListCapacityProvidersOutput,
     ListCodeInterpretersInput,
     ListCodeInterpretersOutput,
     ListConfigurationBundleVersionsInput,
@@ -223,6 +241,8 @@ from .models import (
     ListDatasetsOutput,
     ListEvaluatorsInput,
     ListEvaluatorsOutput,
+    ListGatewayRateLimitsInput,
+    ListGatewayRateLimitsOutput,
     ListGatewayRulesInput,
     ListGatewayRulesOutput,
     ListGatewayTargetsInput,
@@ -289,6 +309,8 @@ from .models import (
     UpdateAgentRuntimeOutput,
     UpdateApiKeyCredentialProviderInput,
     UpdateApiKeyCredentialProviderOutput,
+    UpdateCapacityProviderInput,
+    UpdateCapacityProviderOutput,
     UpdateConfigurationBundleInput,
     UpdateConfigurationBundleOutput,
     UpdateDatasetExamplesInput,
@@ -299,6 +321,8 @@ from .models import (
     UpdateEvaluatorOutput,
     UpdateGatewayInput,
     UpdateGatewayOutput,
+    UpdateGatewayRateLimitInput,
+    UpdateGatewayRateLimitOutput,
     UpdateGatewayRuleInput,
     UpdateGatewayRuleOutput,
     UpdateGatewayTargetInput,
@@ -336,6 +360,9 @@ from .models import (
 
 _ServiceInterceptor = Union[
     Interceptor[AddDatasetExamplesInput, AddDatasetExamplesOutput, Any, Any],
+    Interceptor[
+        BatchPutGatewayRateLimitsInput, BatchPutGatewayRateLimitsOutput, Any, Any
+    ],
     Interceptor[CreateAgentRuntimeInput, CreateAgentRuntimeOutput, Any, Any],
     Interceptor[
         CreateAgentRuntimeEndpointInput, CreateAgentRuntimeEndpointOutput, Any, Any
@@ -348,6 +375,7 @@ _ServiceInterceptor = Union[
     ],
     Interceptor[CreateBrowserInput, CreateBrowserOutput, Any, Any],
     Interceptor[CreateBrowserProfileInput, CreateBrowserProfileOutput, Any, Any],
+    Interceptor[CreateCapacityProviderInput, CreateCapacityProviderOutput, Any, Any],
     Interceptor[CreateCodeInterpreterInput, CreateCodeInterpreterOutput, Any, Any],
     Interceptor[
         CreateConfigurationBundleInput, CreateConfigurationBundleOutput, Any, Any
@@ -356,6 +384,7 @@ _ServiceInterceptor = Union[
     Interceptor[CreateDatasetVersionInput, CreateDatasetVersionOutput, Any, Any],
     Interceptor[CreateEvaluatorInput, CreateEvaluatorOutput, Any, Any],
     Interceptor[CreateGatewayInput, CreateGatewayOutput, Any, Any],
+    Interceptor[CreateGatewayRateLimitInput, CreateGatewayRateLimitOutput, Any, Any],
     Interceptor[CreateGatewayRuleInput, CreateGatewayRuleOutput, Any, Any],
     Interceptor[CreateGatewayTargetInput, CreateGatewayTargetOutput, Any, Any],
     Interceptor[CreateHarnessInput, CreateHarnessOutput, Any, Any],
@@ -395,6 +424,7 @@ _ServiceInterceptor = Union[
     ],
     Interceptor[DeleteBrowserInput, DeleteBrowserOutput, Any, Any],
     Interceptor[DeleteBrowserProfileInput, DeleteBrowserProfileOutput, Any, Any],
+    Interceptor[DeleteCapacityProviderInput, DeleteCapacityProviderOutput, Any, Any],
     Interceptor[DeleteCodeInterpreterInput, DeleteCodeInterpreterOutput, Any, Any],
     Interceptor[
         DeleteConfigurationBundleInput, DeleteConfigurationBundleOutput, Any, Any
@@ -403,6 +433,7 @@ _ServiceInterceptor = Union[
     Interceptor[DeleteDatasetExamplesInput, DeleteDatasetExamplesOutput, Any, Any],
     Interceptor[DeleteEvaluatorInput, DeleteEvaluatorOutput, Any, Any],
     Interceptor[DeleteGatewayInput, DeleteGatewayOutput, Any, Any],
+    Interceptor[DeleteGatewayRateLimitInput, DeleteGatewayRateLimitOutput, Any, Any],
     Interceptor[DeleteGatewayRuleInput, DeleteGatewayRuleOutput, Any, Any],
     Interceptor[DeleteGatewayTargetInput, DeleteGatewayTargetOutput, Any, Any],
     Interceptor[DeleteHarnessInput, DeleteHarnessOutput, Any, Any],
@@ -438,6 +469,7 @@ _ServiceInterceptor = Union[
     ],
     Interceptor[GetBrowserInput, GetBrowserOutput, Any, Any],
     Interceptor[GetBrowserProfileInput, GetBrowserProfileOutput, Any, Any],
+    Interceptor[GetCapacityProviderInput, GetCapacityProviderOutput, Any, Any],
     Interceptor[GetCodeInterpreterInput, GetCodeInterpreterOutput, Any, Any],
     Interceptor[GetConfigurationBundleInput, GetConfigurationBundleOutput, Any, Any],
     Interceptor[
@@ -449,6 +481,7 @@ _ServiceInterceptor = Union[
     Interceptor[GetDatasetInput, GetDatasetOutput, Any, Any],
     Interceptor[GetEvaluatorInput, GetEvaluatorOutput, Any, Any],
     Interceptor[GetGatewayInput, GetGatewayOutput, Any, Any],
+    Interceptor[GetGatewayRateLimitInput, GetGatewayRateLimitOutput, Any, Any],
     Interceptor[GetGatewayRuleInput, GetGatewayRuleOutput, Any, Any],
     Interceptor[GetGatewayTargetInput, GetGatewayTargetOutput, Any, Any],
     Interceptor[GetHarnessInput, GetHarnessOutput, Any, Any],
@@ -486,6 +519,12 @@ _ServiceInterceptor = Union[
         ListAgentRuntimeVersionsInput, ListAgentRuntimeVersionsOutput, Any, Any
     ],
     Interceptor[
+        ListAgentRuntimeVersionsByCapacityProviderInput,
+        ListAgentRuntimeVersionsByCapacityProviderOutput,
+        Any,
+        Any,
+    ],
+    Interceptor[
         ListApiKeyCredentialProvidersInput,
         ListApiKeyCredentialProvidersOutput,
         Any,
@@ -493,6 +532,7 @@ _ServiceInterceptor = Union[
     ],
     Interceptor[ListBrowserProfilesInput, ListBrowserProfilesOutput, Any, Any],
     Interceptor[ListBrowsersInput, ListBrowsersOutput, Any, Any],
+    Interceptor[ListCapacityProvidersInput, ListCapacityProvidersOutput, Any, Any],
     Interceptor[ListCodeInterpretersInput, ListCodeInterpretersOutput, Any, Any],
     Interceptor[
         ListConfigurationBundlesInput, ListConfigurationBundlesOutput, Any, Any
@@ -507,6 +547,7 @@ _ServiceInterceptor = Union[
     Interceptor[ListDatasetsInput, ListDatasetsOutput, Any, Any],
     Interceptor[ListDatasetVersionsInput, ListDatasetVersionsOutput, Any, Any],
     Interceptor[ListEvaluatorsInput, ListEvaluatorsOutput, Any, Any],
+    Interceptor[ListGatewayRateLimitsInput, ListGatewayRateLimitsOutput, Any, Any],
     Interceptor[ListGatewayRulesInput, ListGatewayRulesOutput, Any, Any],
     Interceptor[ListGatewaysInput, ListGatewaysOutput, Any, Any],
     Interceptor[ListGatewayTargetsInput, ListGatewayTargetsOutput, Any, Any],
@@ -575,6 +616,7 @@ _ServiceInterceptor = Union[
         Any,
         Any,
     ],
+    Interceptor[UpdateCapacityProviderInput, UpdateCapacityProviderOutput, Any, Any],
     Interceptor[
         UpdateConfigurationBundleInput, UpdateConfigurationBundleOutput, Any, Any
     ],
@@ -582,6 +624,7 @@ _ServiceInterceptor = Union[
     Interceptor[UpdateDatasetExamplesInput, UpdateDatasetExamplesOutput, Any, Any],
     Interceptor[UpdateEvaluatorInput, UpdateEvaluatorOutput, Any, Any],
     Interceptor[UpdateGatewayInput, UpdateGatewayOutput, Any, Any],
+    Interceptor[UpdateGatewayRateLimitInput, UpdateGatewayRateLimitOutput, Any, Any],
     Interceptor[UpdateGatewayRuleInput, UpdateGatewayRuleOutput, Any, Any],
     Interceptor[UpdateGatewayTargetInput, UpdateGatewayTargetOutput, Any, Any],
     Interceptor[UpdateHarnessInput, UpdateHarnessOutput, Any, Any],
@@ -682,7 +725,12 @@ class Config:
     """
 
     transport: ClientTransport[Any, Any] | None
-    """The transport to use to send requests (e.g. an HTTP client)."""
+    """
+    The transport to use to send requests (e.g. an HTTP client). Operations
+    with bidirectional event streams require a DuplexClientTransport, such
+    as AWSCRTHTTPClient. Transports are assumed not to support duplex
+    streaming unless they explicitly set SUPPORTS_DUPLEX_STREAMING to True.
+    """
 
     user_agent_extra: str | None
     """Additional suffix to be added to the User-Agent header."""

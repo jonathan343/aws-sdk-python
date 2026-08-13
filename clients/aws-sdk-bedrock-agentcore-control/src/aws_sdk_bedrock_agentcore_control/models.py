@@ -26,6 +26,7 @@ from ._private.schemas import (
     AGENT_RUNTIME as _SCHEMA_AGENT_RUNTIME,
     AGENT_RUNTIME_ARTIFACT as _SCHEMA_AGENT_RUNTIME_ARTIFACT,
     AGENT_RUNTIME_ENDPOINT as _SCHEMA_AGENT_RUNTIME_ENDPOINT,
+    AGENT_RUNTIME_VERSION_SUMMARY as _SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY,
     AGENT_SKILLS_DESCRIPTOR as _SCHEMA_AGENT_SKILLS_DESCRIPTOR,
     ALLOWED_WORKLOAD_CONFIGURATION as _SCHEMA_ALLOWED_WORKLOAD_CONFIGURATION,
     API_GATEWAY_TARGET_CONFIGURATION as _SCHEMA_API_GATEWAY_TARGET_CONFIGURATION,
@@ -40,6 +41,10 @@ from ._private.schemas import (
     AUTHORIZATION_DATA as _SCHEMA_AUTHORIZATION_DATA,
     AUTHORIZER_CONFIGURATION as _SCHEMA_AUTHORIZER_CONFIGURATION,
     AUTHORIZING_CLAIM_MATCH_VALUE_TYPE as _SCHEMA_AUTHORIZING_CLAIM_MATCH_VALUE_TYPE,
+    BATCH_PUT_GATEWAY_RATE_LIMITS as _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS,
+    BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT as _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT,
+    BATCH_PUT_GATEWAY_RATE_LIMITS_OUTPUT as _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_OUTPUT,
+    BATCH_PUT_LIMIT_ENTRY as _SCHEMA_BATCH_PUT_LIMIT_ENTRY,
     BEDROCK_EVALUATOR_MODEL_CONFIG as _SCHEMA_BEDROCK_EVALUATOR_MODEL_CONFIG,
     BROWSER_ENTERPRISE_POLICY as _SCHEMA_BROWSER_ENTERPRISE_POLICY,
     BROWSER_NETWORK_CONFIGURATION as _SCHEMA_BROWSER_NETWORK_CONFIGURATION,
@@ -47,6 +52,11 @@ from ._private.schemas import (
     BROWSER_SIGNING_CONFIG_INPUT as _SCHEMA_BROWSER_SIGNING_CONFIG_INPUT,
     BROWSER_SIGNING_CONFIG_OUTPUT as _SCHEMA_BROWSER_SIGNING_CONFIG_OUTPUT,
     BROWSER_SUMMARY as _SCHEMA_BROWSER_SUMMARY,
+    CAPACITY_PROVIDER_CONFIGURATION as _SCHEMA_CAPACITY_PROVIDER_CONFIGURATION,
+    CAPACITY_PROVIDER_SUMMARY as _SCHEMA_CAPACITY_PROVIDER_SUMMARY,
+    CAPACITY_PROVIDER_VOLUME_CONFIGURATION as _SCHEMA_CAPACITY_PROVIDER_VOLUME_CONFIGURATION,
+    CAPACITY_RESERVATION_SPECIFICATION as _SCHEMA_CAPACITY_RESERVATION_SPECIFICATION,
+    CAPACITY_RESERVATION_TARGET as _SCHEMA_CAPACITY_RESERVATION_TARGET,
     CATEGORICAL_SCALE_DEFINITION as _SCHEMA_CATEGORICAL_SCALE_DEFINITION,
     CEDAR_POLICY as _SCHEMA_CEDAR_POLICY,
     CERTIFICATE as _SCHEMA_CERTIFICATE,
@@ -63,6 +73,7 @@ from ._private.schemas import (
     COINBASE_CDP_CONFIGURATION_INPUT as _SCHEMA_COINBASE_CDP_CONFIGURATION_INPUT,
     COINBASE_CDP_CONFIGURATION_OUTPUT as _SCHEMA_COINBASE_CDP_CONFIGURATION_OUTPUT,
     COMPONENT_CONFIGURATION as _SCHEMA_COMPONENT_CONFIGURATION,
+    COMPUTE_CONFIGURATION as _SCHEMA_COMPUTE_CONFIGURATION,
     CONCURRENT_MODIFICATION_EXCEPTION as _SCHEMA_CONCURRENT_MODIFICATION_EXCEPTION,
     CONDITION as _SCHEMA_CONDITION,
     CONFIGURATION_BUNDLE_ACTION as _SCHEMA_CONFIGURATION_BUNDLE_ACTION,
@@ -93,6 +104,9 @@ from ._private.schemas import (
     CREATE_BROWSER_PROFILE as _SCHEMA_CREATE_BROWSER_PROFILE,
     CREATE_BROWSER_PROFILE_INPUT as _SCHEMA_CREATE_BROWSER_PROFILE_INPUT,
     CREATE_BROWSER_PROFILE_OUTPUT as _SCHEMA_CREATE_BROWSER_PROFILE_OUTPUT,
+    CREATE_CAPACITY_PROVIDER as _SCHEMA_CREATE_CAPACITY_PROVIDER,
+    CREATE_CAPACITY_PROVIDER_INPUT as _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT,
+    CREATE_CAPACITY_PROVIDER_OUTPUT as _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT,
     CREATE_CODE_INTERPRETER as _SCHEMA_CREATE_CODE_INTERPRETER,
     CREATE_CODE_INTERPRETER_INPUT as _SCHEMA_CREATE_CODE_INTERPRETER_INPUT,
     CREATE_CODE_INTERPRETER_OUTPUT as _SCHEMA_CREATE_CODE_INTERPRETER_OUTPUT,
@@ -111,6 +125,9 @@ from ._private.schemas import (
     CREATE_GATEWAY as _SCHEMA_CREATE_GATEWAY,
     CREATE_GATEWAY_INPUT as _SCHEMA_CREATE_GATEWAY_INPUT,
     CREATE_GATEWAY_OUTPUT as _SCHEMA_CREATE_GATEWAY_OUTPUT,
+    CREATE_GATEWAY_RATE_LIMIT as _SCHEMA_CREATE_GATEWAY_RATE_LIMIT,
+    CREATE_GATEWAY_RATE_LIMIT_INPUT as _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT,
+    CREATE_GATEWAY_RATE_LIMIT_OUTPUT as _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT,
     CREATE_GATEWAY_RULE as _SCHEMA_CREATE_GATEWAY_RULE,
     CREATE_GATEWAY_RULE_INPUT as _SCHEMA_CREATE_GATEWAY_RULE_INPUT,
     CREATE_GATEWAY_RULE_OUTPUT as _SCHEMA_CREATE_GATEWAY_RULE_OUTPUT,
@@ -193,6 +210,9 @@ from ._private.schemas import (
     DELETE_BROWSER_PROFILE as _SCHEMA_DELETE_BROWSER_PROFILE,
     DELETE_BROWSER_PROFILE_INPUT as _SCHEMA_DELETE_BROWSER_PROFILE_INPUT,
     DELETE_BROWSER_PROFILE_OUTPUT as _SCHEMA_DELETE_BROWSER_PROFILE_OUTPUT,
+    DELETE_CAPACITY_PROVIDER as _SCHEMA_DELETE_CAPACITY_PROVIDER,
+    DELETE_CAPACITY_PROVIDER_INPUT as _SCHEMA_DELETE_CAPACITY_PROVIDER_INPUT,
+    DELETE_CAPACITY_PROVIDER_OUTPUT as _SCHEMA_DELETE_CAPACITY_PROVIDER_OUTPUT,
     DELETE_CODE_INTERPRETER as _SCHEMA_DELETE_CODE_INTERPRETER,
     DELETE_CODE_INTERPRETER_INPUT as _SCHEMA_DELETE_CODE_INTERPRETER_INPUT,
     DELETE_CODE_INTERPRETER_OUTPUT as _SCHEMA_DELETE_CODE_INTERPRETER_OUTPUT,
@@ -211,6 +231,9 @@ from ._private.schemas import (
     DELETE_GATEWAY as _SCHEMA_DELETE_GATEWAY,
     DELETE_GATEWAY_INPUT as _SCHEMA_DELETE_GATEWAY_INPUT,
     DELETE_GATEWAY_OUTPUT as _SCHEMA_DELETE_GATEWAY_OUTPUT,
+    DELETE_GATEWAY_RATE_LIMIT as _SCHEMA_DELETE_GATEWAY_RATE_LIMIT,
+    DELETE_GATEWAY_RATE_LIMIT_INPUT as _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_INPUT,
+    DELETE_GATEWAY_RATE_LIMIT_OUTPUT as _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_OUTPUT,
     DELETE_GATEWAY_RULE as _SCHEMA_DELETE_GATEWAY_RULE,
     DELETE_GATEWAY_RULE_INPUT as _SCHEMA_DELETE_GATEWAY_RULE_INPUT,
     DELETE_GATEWAY_RULE_OUTPUT as _SCHEMA_DELETE_GATEWAY_RULE_OUTPUT,
@@ -261,9 +284,13 @@ from ._private.schemas import (
     DELETE_WORKLOAD_IDENTITY_INPUT as _SCHEMA_DELETE_WORKLOAD_IDENTITY_INPUT,
     DELETE_WORKLOAD_IDENTITY_OUTPUT as _SCHEMA_DELETE_WORKLOAD_IDENTITY_OUTPUT,
     DESCRIPTORS as _SCHEMA_DESCRIPTORS,
+    EBS_VOLUME_CONFIGURATION as _SCHEMA_EBS_VOLUME_CONFIGURATION,
+    EC2_CONFIGURATION as _SCHEMA_EC2_CONFIGURATION,
     EFS_ACCESS_POINT_CONFIGURATION as _SCHEMA_EFS_ACCESS_POINT_CONFIGURATION,
     EFS_CONFIGURATION as _SCHEMA_EFS_CONFIGURATION,
     ENCRYPTION_FAILURE as _SCHEMA_ENCRYPTION_FAILURE,
+    EPHEMERAL_BLOCK_DEVICE_MAPPING as _SCHEMA_EPHEMERAL_BLOCK_DEVICE_MAPPING,
+    EPHEMERAL_EBS_VOLUME_CONFIGURATION as _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION,
     EPISODIC_CONSOLIDATION_OVERRIDE as _SCHEMA_EPISODIC_CONSOLIDATION_OVERRIDE,
     EPISODIC_EXTRACTION_OVERRIDE as _SCHEMA_EPISODIC_EXTRACTION_OVERRIDE,
     EPISODIC_MEMORY_STRATEGY_INPUT as _SCHEMA_EPISODIC_MEMORY_STRATEGY_INPUT,
@@ -289,6 +316,7 @@ from ._private.schemas import (
     GATEWAY_INTERCEPTOR_CONFIGURATION as _SCHEMA_GATEWAY_INTERCEPTOR_CONFIGURATION,
     GATEWAY_POLICY_ENGINE_CONFIGURATION as _SCHEMA_GATEWAY_POLICY_ENGINE_CONFIGURATION,
     GATEWAY_PROTOCOL_CONFIGURATION as _SCHEMA_GATEWAY_PROTOCOL_CONFIGURATION,
+    GATEWAY_RATE_LIMIT_DETAIL as _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL,
     GATEWAY_RULE_DETAIL as _SCHEMA_GATEWAY_RULE_DETAIL,
     GATEWAY_SUMMARY as _SCHEMA_GATEWAY_SUMMARY,
     GATEWAY_TARGET as _SCHEMA_GATEWAY_TARGET,
@@ -307,6 +335,9 @@ from ._private.schemas import (
     GET_BROWSER_PROFILE as _SCHEMA_GET_BROWSER_PROFILE,
     GET_BROWSER_PROFILE_INPUT as _SCHEMA_GET_BROWSER_PROFILE_INPUT,
     GET_BROWSER_PROFILE_OUTPUT as _SCHEMA_GET_BROWSER_PROFILE_OUTPUT,
+    GET_CAPACITY_PROVIDER as _SCHEMA_GET_CAPACITY_PROVIDER,
+    GET_CAPACITY_PROVIDER_INPUT as _SCHEMA_GET_CAPACITY_PROVIDER_INPUT,
+    GET_CAPACITY_PROVIDER_OUTPUT as _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT,
     GET_CODE_INTERPRETER as _SCHEMA_GET_CODE_INTERPRETER,
     GET_CODE_INTERPRETER_INPUT as _SCHEMA_GET_CODE_INTERPRETER_INPUT,
     GET_CODE_INTERPRETER_OUTPUT as _SCHEMA_GET_CODE_INTERPRETER_OUTPUT,
@@ -325,6 +356,9 @@ from ._private.schemas import (
     GET_GATEWAY as _SCHEMA_GET_GATEWAY,
     GET_GATEWAY_INPUT as _SCHEMA_GET_GATEWAY_INPUT,
     GET_GATEWAY_OUTPUT as _SCHEMA_GET_GATEWAY_OUTPUT,
+    GET_GATEWAY_RATE_LIMIT as _SCHEMA_GET_GATEWAY_RATE_LIMIT,
+    GET_GATEWAY_RATE_LIMIT_INPUT as _SCHEMA_GET_GATEWAY_RATE_LIMIT_INPUT,
+    GET_GATEWAY_RATE_LIMIT_OUTPUT as _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT,
     GET_GATEWAY_RULE as _SCHEMA_GET_GATEWAY_RULE,
     GET_GATEWAY_RULE_INPUT as _SCHEMA_GET_GATEWAY_RULE_INPUT,
     GET_GATEWAY_RULE_OUTPUT as _SCHEMA_GET_GATEWAY_RULE_OUTPUT,
@@ -431,6 +465,8 @@ from ._private.schemas import (
     HARNESS_VERSION_SUMMARY as _SCHEMA_HARNESS_VERSION_SUMMARY,
     HOSTING_ENVIRONMENT as _SCHEMA_HOSTING_ENVIRONMENT,
     HTTP_API_SCHEMA_CONFIGURATION as _SCHEMA_HTTP_API_SCHEMA_CONFIGURATION,
+    HTTP_CONNECTOR_SOURCE as _SCHEMA_HTTP_CONNECTOR_SOURCE,
+    HTTP_CONNECTOR_TARGET_CONFIGURATION as _SCHEMA_HTTP_CONNECTOR_TARGET_CONFIGURATION,
     HTTP_TARGET_CONFIGURATION as _SCHEMA_HTTP_TARGET_CONFIGURATION,
     IAM_CREDENTIAL_PROVIDER as _SCHEMA_IAM_CREDENTIAL_PROVIDER,
     IAM_PRINCIPAL as _SCHEMA_IAM_PRINCIPAL,
@@ -445,6 +481,8 @@ from ._private.schemas import (
     INFERENCE_TARGET_CONFIGURATION as _SCHEMA_INFERENCE_TARGET_CONFIGURATION,
     INLINE_EXAMPLES_SOURCE as _SCHEMA_INLINE_EXAMPLES_SOURCE,
     INSIGHT as _SCHEMA_INSIGHT,
+    INSTANCE_LIFECYCLE_CONFIGURATION as _SCHEMA_INSTANCE_LIFECYCLE_CONFIGURATION,
+    INSTANCE_REQUIREMENTS as _SCHEMA_INSTANCE_REQUIREMENTS,
     INTERCEPTOR_CONFIGURATION as _SCHEMA_INTERCEPTOR_CONFIGURATION,
     INTERCEPTOR_INPUT_CONFIGURATION as _SCHEMA_INTERCEPTOR_INPUT_CONFIGURATION,
     INTERCEPTOR_PAYLOAD_EXCLUSION_SELECTOR as _SCHEMA_INTERCEPTOR_PAYLOAD_EXCLUSION_SELECTOR,
@@ -458,7 +496,11 @@ from ._private.schemas import (
     LAMBDA_EVALUATOR_CONFIG as _SCHEMA_LAMBDA_EVALUATOR_CONFIG,
     LAMBDA_INTERCEPTOR_CONFIGURATION as _SCHEMA_LAMBDA_INTERCEPTOR_CONFIGURATION,
     LAMBDA_TRANSFORM_CONFIGURATION as _SCHEMA_LAMBDA_TRANSFORM_CONFIGURATION,
+    LAUNCH_PARAMETERS as _SCHEMA_LAUNCH_PARAMETERS,
+    LAUNCH_TEMPLATE_SOURCE as _SCHEMA_LAUNCH_TEMPLATE_SOURCE,
+    LICENSE_SPECIFICATION as _SCHEMA_LICENSE_SPECIFICATION,
     LIFECYCLE_CONFIGURATION as _SCHEMA_LIFECYCLE_CONFIGURATION,
+    LIMIT_ENTRY as _SCHEMA_LIMIT_ENTRY,
     LINKEDIN_OAUTH2_PROVIDER_CONFIG_INPUT as _SCHEMA_LINKEDIN_OAUTH2_PROVIDER_CONFIG_INPUT,
     LINKEDIN_OAUTH2_PROVIDER_CONFIG_OUTPUT as _SCHEMA_LINKEDIN_OAUTH2_PROVIDER_CONFIG_OUTPUT,
     LIST_AGENT_RUNTIMES as _SCHEMA_LIST_AGENT_RUNTIMES,
@@ -468,6 +510,9 @@ from ._private.schemas import (
     LIST_AGENT_RUNTIME_ENDPOINTS_INPUT as _SCHEMA_LIST_AGENT_RUNTIME_ENDPOINTS_INPUT,
     LIST_AGENT_RUNTIME_ENDPOINTS_OUTPUT as _SCHEMA_LIST_AGENT_RUNTIME_ENDPOINTS_OUTPUT,
     LIST_AGENT_RUNTIME_VERSIONS as _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS,
+    LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER as _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER,
+    LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT as _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT,
+    LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT as _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT,
     LIST_AGENT_RUNTIME_VERSIONS_INPUT as _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_INPUT,
     LIST_AGENT_RUNTIME_VERSIONS_OUTPUT as _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_OUTPUT,
     LIST_API_KEY_CREDENTIAL_PROVIDERS as _SCHEMA_LIST_API_KEY_CREDENTIAL_PROVIDERS,
@@ -479,6 +524,9 @@ from ._private.schemas import (
     LIST_BROWSER_PROFILES as _SCHEMA_LIST_BROWSER_PROFILES,
     LIST_BROWSER_PROFILES_INPUT as _SCHEMA_LIST_BROWSER_PROFILES_INPUT,
     LIST_BROWSER_PROFILES_OUTPUT as _SCHEMA_LIST_BROWSER_PROFILES_OUTPUT,
+    LIST_CAPACITY_PROVIDERS as _SCHEMA_LIST_CAPACITY_PROVIDERS,
+    LIST_CAPACITY_PROVIDERS_INPUT as _SCHEMA_LIST_CAPACITY_PROVIDERS_INPUT,
+    LIST_CAPACITY_PROVIDERS_OUTPUT as _SCHEMA_LIST_CAPACITY_PROVIDERS_OUTPUT,
     LIST_CODE_INTERPRETERS as _SCHEMA_LIST_CODE_INTERPRETERS,
     LIST_CODE_INTERPRETERS_INPUT as _SCHEMA_LIST_CODE_INTERPRETERS_INPUT,
     LIST_CODE_INTERPRETERS_OUTPUT as _SCHEMA_LIST_CODE_INTERPRETERS_OUTPUT,
@@ -503,6 +551,9 @@ from ._private.schemas import (
     LIST_GATEWAYS as _SCHEMA_LIST_GATEWAYS,
     LIST_GATEWAYS_INPUT as _SCHEMA_LIST_GATEWAYS_INPUT,
     LIST_GATEWAYS_OUTPUT as _SCHEMA_LIST_GATEWAYS_OUTPUT,
+    LIST_GATEWAY_RATE_LIMITS as _SCHEMA_LIST_GATEWAY_RATE_LIMITS,
+    LIST_GATEWAY_RATE_LIMITS_INPUT as _SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT,
+    LIST_GATEWAY_RATE_LIMITS_OUTPUT as _SCHEMA_LIST_GATEWAY_RATE_LIMITS_OUTPUT,
     LIST_GATEWAY_RULES as _SCHEMA_LIST_GATEWAY_RULES,
     LIST_GATEWAY_RULES_INPUT as _SCHEMA_LIST_GATEWAY_RULES_INPUT,
     LIST_GATEWAY_RULES_OUTPUT as _SCHEMA_LIST_GATEWAY_RULES_OUTPUT,
@@ -624,6 +675,7 @@ from ._private.schemas import (
     PAYMENT_MANAGER_SUMMARY as _SCHEMA_PAYMENT_MANAGER_SUMMARY,
     PAYMENT_PROVIDER_CONFIGURATION_INPUT as _SCHEMA_PAYMENT_PROVIDER_CONFIGURATION_INPUT,
     PAYMENT_PROVIDER_CONFIGURATION_OUTPUT as _SCHEMA_PAYMENT_PROVIDER_CONFIGURATION_OUTPUT,
+    PERMISSIONS_CONFIGURATION as _SCHEMA_PERMISSIONS_CONFIGURATION,
     POLICY as _SCHEMA_POLICY,
     POLICY_DEFINITION as _SCHEMA_POLICY_DEFINITION,
     POLICY_ENGINE as _SCHEMA_POLICY_ENGINE,
@@ -643,6 +695,7 @@ from ._private.schemas import (
     PUT_RESOURCE_POLICY as _SCHEMA_PUT_RESOURCE_POLICY,
     PUT_RESOURCE_POLICY_INPUT as _SCHEMA_PUT_RESOURCE_POLICY_INPUT,
     PUT_RESOURCE_POLICY_OUTPUT as _SCHEMA_PUT_RESOURCE_POLICY_OUTPUT,
+    RATE_CONFIG as _SCHEMA_RATE_CONFIG,
     RATING_SCALE as _SCHEMA_RATING_SCALE,
     REASONING_CONFIGURATION as _SCHEMA_REASONING_CONFIGURATION,
     RECORDING_CONFIG as _SCHEMA_RECORDING_CONFIG,
@@ -658,6 +711,8 @@ from ._private.schemas import (
     RESOURCE_LIMIT_EXCEEDED_EXCEPTION as _SCHEMA_RESOURCE_LIMIT_EXCEEDED_EXCEPTION,
     RESOURCE_LOCATION as _SCHEMA_RESOURCE_LOCATION,
     RESOURCE_NOT_FOUND_EXCEPTION as _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+    RETRYABLE_CONFLICT_EXCEPTION as _SCHEMA_RETRYABLE_CONFLICT_EXCEPTION,
+    ROOT_VOLUME_CONFIGURATION as _SCHEMA_ROOT_VOLUME_CONFIGURATION,
     ROUTE_TO_TARGET_ACTION as _SCHEMA_ROUTE_TO_TARGET_ACTION,
     RULE as _SCHEMA_RULE,
     RUNTIME_METADATA_CONFIGURATION as _SCHEMA_RUNTIME_METADATA_CONFIGURATION,
@@ -774,6 +829,9 @@ from ._private.schemas import (
     UPDATE_API_KEY_CREDENTIAL_PROVIDER as _SCHEMA_UPDATE_API_KEY_CREDENTIAL_PROVIDER,
     UPDATE_API_KEY_CREDENTIAL_PROVIDER_INPUT as _SCHEMA_UPDATE_API_KEY_CREDENTIAL_PROVIDER_INPUT,
     UPDATE_API_KEY_CREDENTIAL_PROVIDER_OUTPUT as _SCHEMA_UPDATE_API_KEY_CREDENTIAL_PROVIDER_OUTPUT,
+    UPDATE_CAPACITY_PROVIDER as _SCHEMA_UPDATE_CAPACITY_PROVIDER,
+    UPDATE_CAPACITY_PROVIDER_INPUT as _SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT,
+    UPDATE_CAPACITY_PROVIDER_OUTPUT as _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT,
     UPDATE_CONFIGURATION_BUNDLE as _SCHEMA_UPDATE_CONFIGURATION_BUNDLE,
     UPDATE_CONFIGURATION_BUNDLE_INPUT as _SCHEMA_UPDATE_CONFIGURATION_BUNDLE_INPUT,
     UPDATE_CONFIGURATION_BUNDLE_OUTPUT as _SCHEMA_UPDATE_CONFIGURATION_BUNDLE_OUTPUT,
@@ -789,6 +847,9 @@ from ._private.schemas import (
     UPDATE_GATEWAY as _SCHEMA_UPDATE_GATEWAY,
     UPDATE_GATEWAY_INPUT as _SCHEMA_UPDATE_GATEWAY_INPUT,
     UPDATE_GATEWAY_OUTPUT as _SCHEMA_UPDATE_GATEWAY_OUTPUT,
+    UPDATE_GATEWAY_RATE_LIMIT as _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT,
+    UPDATE_GATEWAY_RATE_LIMIT_INPUT as _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT,
+    UPDATE_GATEWAY_RATE_LIMIT_OUTPUT as _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT,
     UPDATE_GATEWAY_RULE as _SCHEMA_UPDATE_GATEWAY_RULE,
     UPDATE_GATEWAY_RULE_INPUT as _SCHEMA_UPDATE_GATEWAY_RULE_INPUT,
     UPDATE_GATEWAY_RULE_OUTPUT as _SCHEMA_UPDATE_GATEWAY_RULE_OUTPUT,
@@ -849,7 +910,9 @@ from ._private.schemas import (
     VERSION_CREATED_BY_SOURCE as _SCHEMA_VERSION_CREATED_BY_SOURCE,
     VERSION_FILTER as _SCHEMA_VERSION_FILTER,
     VERSION_LINEAGE_METADATA as _SCHEMA_VERSION_LINEAGE_METADATA,
+    VOLUME_CONFIGURATION as _SCHEMA_VOLUME_CONFIGURATION,
     VPC_CONFIG as _SCHEMA_VPC_CONFIG,
+    VPC_CONFIGURATION as _SCHEMA_VPC_CONFIGURATION,
     WAF_CONFIGURATION as _SCHEMA_WAF_CONFIGURATION,
     WEIGHTED_OVERRIDE as _SCHEMA_WEIGHTED_OVERRIDE,
     WEIGHTED_ROUTE as _SCHEMA_WEIGHTED_ROUTE,
@@ -6120,6 +6183,56 @@ class _AuthorizerConfigurationDeserializer:
         self._result = value
 
 
+@dataclass(kw_only=True)
+class CapacityProviderConfiguration:
+    """
+    Configuration for customer-managed compute capacity for the AgentCore
+    Runtime. A capacity provider runs the AgentCore Runtime on the Instances
+    compute type, using Amazon Web Services managed compute in your account.
+    """
+
+    capacity_provider_arn: str | None = None
+    """
+    The Amazon Resource Name (ARN) of the capacity provider to use for the
+    AgentCore Runtime.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CAPACITY_PROVIDER_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.capacity_provider_arn is not None:
+            serializer.write_string(
+                _SCHEMA_CAPACITY_PROVIDER_CONFIGURATION.members["capacityProviderArn"],
+                self.capacity_provider_arn,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_arn"] = de.read_string(
+                        _SCHEMA_CAPACITY_PROVIDER_CONFIGURATION.members[
+                            "capacityProviderArn"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_CAPACITY_PROVIDER_CONFIGURATION, consumer=_consumer
+        )
+        return kwargs
+
+
 def _serialize_environment_variables_map(
     serializer: ShapeSerializer, schema: Schema, value: dict[str, str]
 ) -> None:
@@ -6144,6 +6257,78 @@ def _deserialize_environment_variables_map(
 
     deserializer.read_map(schema, _read_value)
     return result
+
+
+@dataclass(kw_only=True)
+class CapacityProviderVolumeConfiguration:
+    """
+    Configuration for a capacity provider volume mounted into the AgentCore
+    Runtime. This references a persistent volume by its logical name, as
+    defined in the capacity provider's list of volumes.
+    """
+
+    volume_name: str
+    """
+    The logical name of the capacity provider volume to mount. This name
+    must match a volume that is defined in the capacity provider's list of
+    volumes.
+    """
+
+    mount_path: str
+    """
+    The mount path for the capacity provider volume inside the AgentCore
+    Runtime. The path must be under `/mnt` with exactly one subdirectory
+    level (for example, `/mnt/data`).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CAPACITY_PROVIDER_VOLUME_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_CAPACITY_PROVIDER_VOLUME_CONFIGURATION.members["volumeName"],
+            self.volume_name,
+        )
+        serializer.write_string(
+            _SCHEMA_CAPACITY_PROVIDER_VOLUME_CONFIGURATION.members["mountPath"],
+            self.mount_path,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["volume_name"] = de.read_string(
+                        _SCHEMA_CAPACITY_PROVIDER_VOLUME_CONFIGURATION.members[
+                            "volumeName"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["mount_path"] = de.read_string(
+                        _SCHEMA_CAPACITY_PROVIDER_VOLUME_CONFIGURATION.members[
+                            "mountPath"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_CAPACITY_PROVIDER_VOLUME_CONFIGURATION, consumer=_consumer
+        )
+        if "volume_name" not in kwargs:
+            kwargs["volume_name"] = ""
+        if "mount_path" not in kwargs:
+            kwargs["mount_path"] = ""
+        return kwargs
 
 
 @dataclass(kw_only=True)
@@ -6394,6 +6579,30 @@ class FilesystemConfigurationEfsAccessPoint:
 
 
 @dataclass
+class FilesystemConfigurationCapacityProviderVolume:
+    """
+    Configuration for a capacity provider volume to mount into the AgentCore
+    Runtime. This mounts a persistent volume that is defined on the capacity
+    provider, referenced by its logical name.
+    """
+
+    value: CapacityProviderVolumeConfiguration
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_FILESYSTEM_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_FILESYSTEM_CONFIGURATION.members["capacityProviderVolume"],
+            self.value,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=CapacityProviderVolumeConfiguration.deserialize(deserializer))
+
+
+@dataclass
 class FilesystemConfigurationUnknown:
     """
     Represents an unknown variant.
@@ -6421,6 +6630,7 @@ FilesystemConfiguration = Union[
     FilesystemConfigurationSessionStorage
     | FilesystemConfigurationS3FilesAccessPoint
     | FilesystemConfigurationEfsAccessPoint
+    | FilesystemConfigurationCapacityProviderVolume
     | FilesystemConfigurationUnknown
 ]
 """
@@ -6455,6 +6665,11 @@ class _FilesystemConfigurationDeserializer:
 
             case 2:
                 self._set_result(FilesystemConfigurationEfsAccessPoint.deserialize(de))
+
+            case 3:
+                self._set_result(
+                    FilesystemConfigurationCapacityProviderVolume.deserialize(de)
+                )
 
             case _:
                 self._set_result(
@@ -7006,6 +7221,14 @@ class CreateAgentRuntimeInput:
     AgentCore Runtime sessions.
     """
 
+    capacity_provider_configuration: CapacityProviderConfiguration | None = None
+    """
+    The capacity provider configuration for the AgentCore Runtime. Use a
+    capacity provider to run the AgentCore Runtime on the Instances compute
+    type, which provisions Amazon Web Services managed compute in your
+    account.
+    """
+
     tags: dict[str, str] | None = None
     """
     A map of tag keys and values to assign to the agent runtime. Tags enable
@@ -7090,6 +7313,14 @@ class CreateAgentRuntimeInput:
                 serializer,
                 _SCHEMA_CREATE_AGENT_RUNTIME_INPUT.members["filesystemConfigurations"],
                 self.filesystem_configurations,
+            )
+
+        if self.capacity_provider_configuration is not None:
+            serializer.write_struct(
+                _SCHEMA_CREATE_AGENT_RUNTIME_INPUT.members[
+                    "capacityProviderConfiguration"
+                ],
+                self.capacity_provider_configuration,
             )
 
         if self.tags is not None:
@@ -7180,6 +7411,11 @@ class CreateAgentRuntimeInput:
                     )
 
                 case 12:
+                    kwargs["capacity_provider_configuration"] = (
+                        CapacityProviderConfiguration.deserialize(de)
+                    )
+
+                case 13:
                     kwargs["tags"] = _deserialize_tags_map(
                         de, _SCHEMA_CREATE_AGENT_RUNTIME_INPUT.members["tags"]
                     )
@@ -7401,6 +7637,13 @@ class DeleteAgentRuntimeInput:
     agent_runtime_id: str | None = None
     """The unique identifier of the AgentCore Runtime to delete."""
 
+    agent_runtime_version: str | None = None
+    """
+    The version of the AgentCore Runtime to delete. When you provide this
+    value, only that version is deleted. When you omit it, the entire
+    AgentCore Runtime and all of its versions are deleted.
+    """
+
     client_token: str | None = None
     """
     A unique, case-sensitive identifier to ensure that the operation
@@ -7416,6 +7659,12 @@ class DeleteAgentRuntimeInput:
             serializer.write_string(
                 _SCHEMA_DELETE_AGENT_RUNTIME_INPUT.members["agentRuntimeId"],
                 self.agent_runtime_id,
+            )
+
+        if self.agent_runtime_version is not None:
+            serializer.write_string(
+                _SCHEMA_DELETE_AGENT_RUNTIME_INPUT.members["agentRuntimeVersion"],
+                self.agent_runtime_version,
             )
 
         if self.client_token is not None:
@@ -7440,6 +7689,13 @@ class DeleteAgentRuntimeInput:
                     )
 
                 case 1:
+                    kwargs["agent_runtime_version"] = de.read_string(
+                        _SCHEMA_DELETE_AGENT_RUNTIME_INPUT.members[
+                            "agentRuntimeVersion"
+                        ]
+                    )
+
+                case 2:
                     kwargs["client_token"] = de.read_string(
                         _SCHEMA_DELETE_AGENT_RUNTIME_INPUT.members["clientToken"]
                     )
@@ -7461,6 +7717,12 @@ class DeleteAgentRuntimeOutput:
     agent_runtime_id: str | None = None
     """The unique identifier of the AgentCore Runtime."""
 
+    agent_runtime_version: str | None = None
+    """
+    The version of the AgentCore Runtime that was deleted. This value is
+    present only when you delete a single version.
+    """
+
     def serialize(self, serializer: ShapeSerializer):
         serializer.write_struct(_SCHEMA_DELETE_AGENT_RUNTIME_OUTPUT, self)
 
@@ -7472,6 +7734,12 @@ class DeleteAgentRuntimeOutput:
             serializer.write_string(
                 _SCHEMA_DELETE_AGENT_RUNTIME_OUTPUT.members["agentRuntimeId"],
                 self.agent_runtime_id,
+            )
+
+        if self.agent_runtime_version is not None:
+            serializer.write_string(
+                _SCHEMA_DELETE_AGENT_RUNTIME_OUTPUT.members["agentRuntimeVersion"],
+                self.agent_runtime_version,
             )
 
     @classmethod
@@ -7494,6 +7762,13 @@ class DeleteAgentRuntimeOutput:
                 case 1:
                     kwargs["agent_runtime_id"] = de.read_string(
                         _SCHEMA_DELETE_AGENT_RUNTIME_OUTPUT.members["agentRuntimeId"]
+                    )
+
+                case 2:
+                    kwargs["agent_runtime_version"] = de.read_string(
+                        _SCHEMA_DELETE_AGENT_RUNTIME_OUTPUT.members[
+                            "agentRuntimeVersion"
+                        ]
                     )
 
                 case _:
@@ -7715,6 +7990,9 @@ class GetAgentRuntimeOutput:
     filesystem_configurations: list[FilesystemConfiguration] | None = None
     """The filesystem configurations mounted into the AgentCore Runtime."""
 
+    capacity_provider_configuration: CapacityProviderConfiguration | None = None
+    """The capacity provider configuration for the AgentCore Runtime."""
+
     def serialize(self, serializer: ShapeSerializer):
         serializer.write_struct(_SCHEMA_GET_AGENT_RUNTIME_OUTPUT, self)
 
@@ -7816,6 +8094,14 @@ class GetAgentRuntimeOutput:
                 serializer,
                 _SCHEMA_GET_AGENT_RUNTIME_OUTPUT.members["filesystemConfigurations"],
                 self.filesystem_configurations,
+            )
+
+        if self.capacity_provider_configuration is not None:
+            serializer.write_struct(
+                _SCHEMA_GET_AGENT_RUNTIME_OUTPUT.members[
+                    "capacityProviderConfiguration"
+                ],
+                self.capacity_provider_configuration,
             )
 
     @classmethod
@@ -7938,6 +8224,11 @@ class GetAgentRuntimeOutput:
                                 "filesystemConfigurations"
                             ],
                         )
+                    )
+
+                case 20:
+                    kwargs["capacity_provider_configuration"] = (
+                        CapacityProviderConfiguration.deserialize(de)
                     )
 
                 case _:
@@ -8508,6 +8799,9 @@ class UpdateAgentRuntimeInput:
     Runtime.
     """
 
+    capacity_provider_configuration: CapacityProviderConfiguration | None = None
+    """The updated capacity provider configuration for the AgentCore Runtime."""
+
     client_token: str | None = None
     """
     A unique, case-sensitive identifier to ensure idempotency of the
@@ -8591,6 +8885,14 @@ class UpdateAgentRuntimeInput:
                 serializer,
                 _SCHEMA_UPDATE_AGENT_RUNTIME_INPUT.members["filesystemConfigurations"],
                 self.filesystem_configurations,
+            )
+
+        if self.capacity_provider_configuration is not None:
+            serializer.write_struct(
+                _SCHEMA_UPDATE_AGENT_RUNTIME_INPUT.members[
+                    "capacityProviderConfiguration"
+                ],
+                self.capacity_provider_configuration,
             )
 
         if self.client_token is not None:
@@ -8680,6 +8982,11 @@ class UpdateAgentRuntimeInput:
                     )
 
                 case 12:
+                    kwargs["capacity_provider_configuration"] = (
+                        CapacityProviderConfiguration.deserialize(de)
+                    )
+
+                case 13:
                     kwargs["client_token"] = de.read_string(
                         _SCHEMA_UPDATE_AGENT_RUNTIME_INPUT.members["clientToken"]
                     )
@@ -8861,6 +9168,108 @@ UPDATE_AGENT_RUNTIME = APIOperation(
         _SCHEMA_VALIDATION_EXCEPTION,
     ],
 )
+
+
+@dataclass(kw_only=True)
+class AgentRuntimeVersionSummary:
+    """
+    Summary information about an agent runtime version associated with a
+    capacity provider. This is returned by
+    `ListAgentRuntimeVersionsByCapacityProvider`.
+    """
+
+    agent_runtime_arn: str
+    """The Amazon Resource Name (ARN) of the agent runtime."""
+
+    agent_runtime_version: str
+    """The version of the agent runtime."""
+
+    status: AgentRuntimeStatus
+    """The current status of the agent runtime version."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY.members["agentRuntimeArn"],
+            self.agent_runtime_arn,
+        )
+        serializer.write_string(
+            _SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY.members["agentRuntimeVersion"],
+            self.agent_runtime_version,
+        )
+        serializer.write_string(
+            _SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY.members["status"], self.status
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["agent_runtime_arn"] = de.read_string(
+                        _SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY.members["agentRuntimeArn"]
+                    )
+
+                case 1:
+                    kwargs["agent_runtime_version"] = de.read_string(
+                        _SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY.members[
+                            "agentRuntimeVersion"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["status"] = AgentRuntimeStatus(
+                        de.read_string(
+                            _SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY.members["status"]
+                        )
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_AGENT_RUNTIME_VERSION_SUMMARY, consumer=_consumer
+        )
+        if "agent_runtime_arn" not in kwargs:
+            kwargs["agent_runtime_arn"] = ""
+        if "agent_runtime_version" not in kwargs:
+            kwargs["agent_runtime_version"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = AgentRuntimeStatus._corrected("")
+        return kwargs
+
+
+def _serialize_agent_runtime_version_summary_list(
+    serializer: ShapeSerializer, schema: Schema, value: list[AgentRuntimeVersionSummary]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_agent_runtime_version_summary_list(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[AgentRuntimeVersionSummary]:
+    result: list[AgentRuntimeVersionSummary] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(AgentRuntimeVersionSummary.deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
 
 
 @dataclass(kw_only=True)
@@ -13693,6 +14102,3301 @@ LIST_BROWSERS = APIOperation(
     error_schemas=[
         _SCHEMA_ACCESS_DENIED_EXCEPTION,
         _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+class CapacityReservationPreference(UnknownEnumMixin, StrEnum):
+    CAPACITY_RESERVATIONS_ONLY = "capacity-reservations-only"
+    OPEN = "open"
+    NONE = "none"
+
+
+@dataclass(kw_only=True)
+class CapacityReservationTarget:
+    """
+    Information about the target Capacity Reservation or Capacity
+    Reservation group for the instances.
+    """
+
+    capacity_reservation_id: str | None = None
+    """The ID of the Capacity Reservation in which to run the instances."""
+
+    capacity_reservation_resource_group_arn: str | None = None
+    """
+    The Amazon Resource Name (ARN) of the Capacity Reservation resource
+    group in which to run the instances.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CAPACITY_RESERVATION_TARGET, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.capacity_reservation_id is not None:
+            serializer.write_string(
+                _SCHEMA_CAPACITY_RESERVATION_TARGET.members["capacityReservationId"],
+                self.capacity_reservation_id,
+            )
+
+        if self.capacity_reservation_resource_group_arn is not None:
+            serializer.write_string(
+                _SCHEMA_CAPACITY_RESERVATION_TARGET.members[
+                    "capacityReservationResourceGroupArn"
+                ],
+                self.capacity_reservation_resource_group_arn,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_reservation_id"] = de.read_string(
+                        _SCHEMA_CAPACITY_RESERVATION_TARGET.members[
+                            "capacityReservationId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["capacity_reservation_resource_group_arn"] = de.read_string(
+                        _SCHEMA_CAPACITY_RESERVATION_TARGET.members[
+                            "capacityReservationResourceGroupArn"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_CAPACITY_RESERVATION_TARGET, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class CapacityReservationSpecification:
+    """The Capacity Reservation targeting option for the instances."""
+
+    capacity_reservation_preference: CapacityReservationPreference | None = None
+    """The Capacity Reservation preference for the instances."""
+
+    capacity_reservation_target: CapacityReservationTarget | None = None
+    """
+    The target Capacity Reservation or Capacity Reservation group for the
+    instances.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CAPACITY_RESERVATION_SPECIFICATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.capacity_reservation_preference is not None:
+            serializer.write_string(
+                _SCHEMA_CAPACITY_RESERVATION_SPECIFICATION.members[
+                    "capacityReservationPreference"
+                ],
+                self.capacity_reservation_preference,
+            )
+
+        if self.capacity_reservation_target is not None:
+            serializer.write_struct(
+                _SCHEMA_CAPACITY_RESERVATION_SPECIFICATION.members[
+                    "capacityReservationTarget"
+                ],
+                self.capacity_reservation_target,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_reservation_preference"] = (
+                        CapacityReservationPreference(
+                            de.read_string(
+                                _SCHEMA_CAPACITY_RESERVATION_SPECIFICATION.members[
+                                    "capacityReservationPreference"
+                                ]
+                            )
+                        )
+                    )
+
+                case 1:
+                    kwargs["capacity_reservation_target"] = (
+                        CapacityReservationTarget.deserialize(de)
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_CAPACITY_RESERVATION_SPECIFICATION, consumer=_consumer
+        )
+        return kwargs
+
+
+class EbsVolumeType(UnknownEnumMixin, StrEnum):
+    """The type of Amazon EBS volume."""
+
+    STANDARD = "standard"
+    IO1 = "io1"
+    IO2 = "io2"
+    GP2 = "gp2"
+    SC1 = "sc1"
+    ST1 = "st1"
+    GP3 = "gp3"
+
+
+@dataclass(kw_only=True)
+class EphemeralEBSVolumeConfiguration:
+    """
+    The shared Amazon EBS performance and encryption properties for a
+    volume. These properties are common across the different volume
+    configurations for a capacity provider.
+    """
+
+    volume_type: EbsVolumeType = EbsVolumeType("gp3")
+    """
+    The Amazon EBS volume type. If you do not specify a type, the default is
+    `gp3`.
+    """
+
+    iops: int | None = None
+    """
+    The number of IOPS to provision. For `gp3`, `io1`, and `io2` volumes,
+    this is the number of IOPS provisioned for the volume. For `gp2`
+    volumes, this sets the baseline IOPS performance. It also controls the
+    rate at which the volume accumulates I/O credits for bursting. Supported
+    values: `gp3`, 3,000--80,000; `io1`, 100--64,000; `io2`, 100--256,000.
+    """
+
+    throughput: int | None = None
+    """
+    The throughput to provision, in MiB/s. Valid only for `gp3` volumes.
+    Valid range: 125--2,000 MiB/s.
+    """
+
+    encrypted: bool | None = None
+    """
+    Specifies whether to encrypt the volume. Encrypted volumes can be
+    attached only to instances that support Amazon EBS encryption. If you
+    create a volume from a snapshot, you cannot specify an encryption value.
+    """
+
+    kms_key_id: str | None = None
+    """
+    The identifier (key ID, key alias, key ARN, or alias ARN) of the
+    customer managed KMS key to use for Amazon EBS encryption.
+    """
+
+    snapshot_id: str | None = None
+    """The ID of the snapshot."""
+
+    volume_size: int | None = None
+    """
+    The size of the volume, in GiB. You must specify either a snapshot ID or
+    a volume size. Supported sizes: `gp2`, 1--16,384; `gp3`, 1--65,536;
+    `io1`, 4--16,384; `io2`, 4--65,536.
+    """
+
+    volume_initialization_rate: int | None = None
+    """
+    The rate at which the volume is initialized after creation, in MiB/s.
+    Supported only for volumes created from snapshots. Valid range: 100--300
+    MiB/s.
+    """
+
+    ebs_card_index: int | None = None
+    """
+    The index of the Amazon EBS card. Applies to instances with multiple
+    Amazon EBS cards.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["volumeType"],
+            self.volume_type,
+        )
+        if self.iops is not None:
+            serializer.write_integer(
+                _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["iops"], self.iops
+            )
+
+        if self.throughput is not None:
+            serializer.write_integer(
+                _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["throughput"],
+                self.throughput,
+            )
+
+        if self.encrypted is not None:
+            serializer.write_boolean(
+                _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["encrypted"],
+                self.encrypted,
+            )
+
+        if self.kms_key_id is not None:
+            serializer.write_string(
+                _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["kmsKeyId"],
+                self.kms_key_id,
+            )
+
+        if self.snapshot_id is not None:
+            serializer.write_string(
+                _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["snapshotId"],
+                self.snapshot_id,
+            )
+
+        if self.volume_size is not None:
+            serializer.write_integer(
+                _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["volumeSize"],
+                self.volume_size,
+            )
+
+        if self.volume_initialization_rate is not None:
+            serializer.write_integer(
+                _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members[
+                    "volumeInitializationRate"
+                ],
+                self.volume_initialization_rate,
+            )
+
+        if self.ebs_card_index is not None:
+            serializer.write_integer(
+                _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["ebsCardIndex"],
+                self.ebs_card_index,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["volume_type"] = EbsVolumeType(
+                        de.read_string(
+                            _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members[
+                                "volumeType"
+                            ]
+                        )
+                    )
+
+                case 1:
+                    kwargs["iops"] = de.read_integer(
+                        _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["iops"]
+                    )
+
+                case 2:
+                    kwargs["throughput"] = de.read_integer(
+                        _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["throughput"]
+                    )
+
+                case 3:
+                    kwargs["encrypted"] = de.read_boolean(
+                        _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["encrypted"]
+                    )
+
+                case 4:
+                    kwargs["kms_key_id"] = de.read_string(
+                        _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["kmsKeyId"]
+                    )
+
+                case 5:
+                    kwargs["snapshot_id"] = de.read_string(
+                        _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["snapshotId"]
+                    )
+
+                case 6:
+                    kwargs["volume_size"] = de.read_integer(
+                        _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members["volumeSize"]
+                    )
+
+                case 7:
+                    kwargs["volume_initialization_rate"] = de.read_integer(
+                        _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members[
+                            "volumeInitializationRate"
+                        ]
+                    )
+
+                case 8:
+                    kwargs["ebs_card_index"] = de.read_integer(
+                        _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION.members[
+                            "ebsCardIndex"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_EPHEMERAL_EBS_VOLUME_CONFIGURATION, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class EphemeralBlockDeviceMapping:
+    """A block device mapping for an instance store (ephemeral) volume."""
+
+    device_name: str | None = None
+    """The device name, for example `/dev/sdh` or `xvdh`."""
+
+    virtual_name: str | None = None
+    """
+    The virtual device name (`ephemeralN`). Instance store volumes are
+    numbered starting from 0. The number of available instance store volumes
+    depends on the instance type. After you connect to the instance, you
+    must mount the volume.
+    """
+
+    ebs: EphemeralEBSVolumeConfiguration | None = None
+    """
+    The shared Amazon EBS performance and encryption properties for a
+    volume. These properties are common across the different volume
+    configurations for a capacity provider.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EPHEMERAL_BLOCK_DEVICE_MAPPING, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.device_name is not None:
+            serializer.write_string(
+                _SCHEMA_EPHEMERAL_BLOCK_DEVICE_MAPPING.members["deviceName"],
+                self.device_name,
+            )
+
+        if self.virtual_name is not None:
+            serializer.write_string(
+                _SCHEMA_EPHEMERAL_BLOCK_DEVICE_MAPPING.members["virtualName"],
+                self.virtual_name,
+            )
+
+        if self.ebs is not None:
+            serializer.write_struct(
+                _SCHEMA_EPHEMERAL_BLOCK_DEVICE_MAPPING.members["ebs"], self.ebs
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["device_name"] = de.read_string(
+                        _SCHEMA_EPHEMERAL_BLOCK_DEVICE_MAPPING.members["deviceName"]
+                    )
+
+                case 1:
+                    kwargs["virtual_name"] = de.read_string(
+                        _SCHEMA_EPHEMERAL_BLOCK_DEVICE_MAPPING.members["virtualName"]
+                    )
+
+                case 2:
+                    kwargs["ebs"] = EphemeralEBSVolumeConfiguration.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_EPHEMERAL_BLOCK_DEVICE_MAPPING, consumer=_consumer
+        )
+        return kwargs
+
+
+def _serialize_ephemeral_block_device_mapping_list(
+    serializer: ShapeSerializer,
+    schema: Schema,
+    value: list[EphemeralBlockDeviceMapping],
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_ephemeral_block_device_mapping_list(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[EphemeralBlockDeviceMapping]:
+    result: list[EphemeralBlockDeviceMapping] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EphemeralBlockDeviceMapping.deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+def _serialize_instance_type_list(
+    serializer: ShapeSerializer, schema: Schema, value: list[str]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+
+def _deserialize_instance_type_list(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+@dataclass(kw_only=True)
+class InstanceRequirements:
+    """The requirements for Amazon EC2 instance types in a capacity provider."""
+
+    allowed_instance_types: list[str]
+    """
+    The list of allowed instance types. You can specify up to 30 instance
+    types.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_INSTANCE_REQUIREMENTS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        _serialize_instance_type_list(
+            serializer,
+            _SCHEMA_INSTANCE_REQUIREMENTS.members["allowedInstanceTypes"],
+            self.allowed_instance_types,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["allowed_instance_types"] = _deserialize_instance_type_list(
+                        de,
+                        _SCHEMA_INSTANCE_REQUIREMENTS.members["allowedInstanceTypes"],
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_INSTANCE_REQUIREMENTS, consumer=_consumer)
+        if "allowed_instance_types" not in kwargs:
+            kwargs["allowed_instance_types"] = []
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(allowed_instance_types=[])
+
+
+@dataclass(kw_only=True)
+class LicenseSpecification:
+    """A license configuration to associate with the instances."""
+
+    license_configuration_arn: str
+    """The Amazon Resource Name (ARN) of the license configuration."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LICENSE_SPECIFICATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_LICENSE_SPECIFICATION.members["licenseConfigurationArn"],
+            self.license_configuration_arn,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["license_configuration_arn"] = de.read_string(
+                        _SCHEMA_LICENSE_SPECIFICATION.members["licenseConfigurationArn"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LICENSE_SPECIFICATION, consumer=_consumer)
+        if "license_configuration_arn" not in kwargs:
+            kwargs["license_configuration_arn"] = ""
+        return kwargs
+
+
+def _serialize_license_specification_list(
+    serializer: ShapeSerializer, schema: Schema, value: list[LicenseSpecification]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_license_specification_list(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[LicenseSpecification]:
+    result: list[LicenseSpecification] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(LicenseSpecification.deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+class Monitoring(UnknownEnumMixin, StrEnum):
+    BASIC = "BASIC"
+    DETAILED = "DETAILED"
+
+
+class OperatingSystem(UnknownEnumMixin, StrEnum):
+    """
+    The operating system and CPU architecture for capacity provider
+    instances.
+    """
+
+    LINUX_X86_64 = "LINUX_X86_64"
+    LINUX_ARM64 = "LINUX_ARM64"
+
+
+@dataclass(kw_only=True)
+class LaunchParameters:
+    """
+    The parameters for launching Amazon EC2 instances in a capacity
+    provider.
+    """
+
+    operating_system: OperatingSystem
+    """The operating system and CPU architecture for the instances."""
+
+    instance_requirements: InstanceRequirements
+    """The requirements that determine which instance types can be launched."""
+
+    ephemeral_volumes: list[EphemeralBlockDeviceMapping] | None = None
+    """
+    The block device mappings for instance store (ephemeral) volumes. You
+    can specify up to five mappings.
+    """
+
+    monitoring: Monitoring | None = None
+    """The monitoring level for the instances."""
+
+    license_specifications: list[LicenseSpecification] | None = None
+    """
+    The license configurations to associate with the instances. You can
+    specify up to five configurations.
+    """
+
+    capacity_reservation_specification: CapacityReservationSpecification | None = None
+    """The Capacity Reservation targeting option for the instances."""
+
+    ssh_key_name: str | None = None
+    """
+    The name of the SSH key pair to configure on the instances for SSH
+    connectivity.
+    """
+
+    instance_profile_arn: str | None = None
+    """
+    The Amazon Resource Name (ARN) of the IAM instance profile to associate
+    with launched instances. If provided, this overrides the default
+    instance profile.
+    """
+
+    propagated_tags: dict[str, str] | None = None
+    """
+    The tags to propagate to all Amazon EC2 resources (instances, volumes,
+    and network interfaces) that the capacity provider creates.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LAUNCH_PARAMETERS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_LAUNCH_PARAMETERS.members["operatingSystem"], self.operating_system
+        )
+        serializer.write_struct(
+            _SCHEMA_LAUNCH_PARAMETERS.members["instanceRequirements"],
+            self.instance_requirements,
+        )
+        if self.ephemeral_volumes is not None:
+            _serialize_ephemeral_block_device_mapping_list(
+                serializer,
+                _SCHEMA_LAUNCH_PARAMETERS.members["ephemeralVolumes"],
+                self.ephemeral_volumes,
+            )
+
+        if self.monitoring is not None:
+            serializer.write_string(
+                _SCHEMA_LAUNCH_PARAMETERS.members["monitoring"], self.monitoring
+            )
+
+        if self.license_specifications is not None:
+            _serialize_license_specification_list(
+                serializer,
+                _SCHEMA_LAUNCH_PARAMETERS.members["licenseSpecifications"],
+                self.license_specifications,
+            )
+
+        if self.capacity_reservation_specification is not None:
+            serializer.write_struct(
+                _SCHEMA_LAUNCH_PARAMETERS.members["capacityReservationSpecification"],
+                self.capacity_reservation_specification,
+            )
+
+        if self.ssh_key_name is not None:
+            serializer.write_string(
+                _SCHEMA_LAUNCH_PARAMETERS.members["sshKeyName"], self.ssh_key_name
+            )
+
+        if self.instance_profile_arn is not None:
+            serializer.write_string(
+                _SCHEMA_LAUNCH_PARAMETERS.members["instanceProfileArn"],
+                self.instance_profile_arn,
+            )
+
+        if self.propagated_tags is not None:
+            _serialize_tags_map(
+                serializer,
+                _SCHEMA_LAUNCH_PARAMETERS.members["propagatedTags"],
+                self.propagated_tags,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["operating_system"] = OperatingSystem(
+                        de.read_string(
+                            _SCHEMA_LAUNCH_PARAMETERS.members["operatingSystem"]
+                        )
+                    )
+
+                case 1:
+                    kwargs["instance_requirements"] = InstanceRequirements.deserialize(
+                        de
+                    )
+
+                case 2:
+                    kwargs["ephemeral_volumes"] = (
+                        _deserialize_ephemeral_block_device_mapping_list(
+                            de, _SCHEMA_LAUNCH_PARAMETERS.members["ephemeralVolumes"]
+                        )
+                    )
+
+                case 3:
+                    kwargs["monitoring"] = Monitoring(
+                        de.read_string(_SCHEMA_LAUNCH_PARAMETERS.members["monitoring"])
+                    )
+
+                case 4:
+                    kwargs["license_specifications"] = (
+                        _deserialize_license_specification_list(
+                            de,
+                            _SCHEMA_LAUNCH_PARAMETERS.members["licenseSpecifications"],
+                        )
+                    )
+
+                case 5:
+                    kwargs["capacity_reservation_specification"] = (
+                        CapacityReservationSpecification.deserialize(de)
+                    )
+
+                case 6:
+                    kwargs["ssh_key_name"] = de.read_string(
+                        _SCHEMA_LAUNCH_PARAMETERS.members["sshKeyName"]
+                    )
+
+                case 7:
+                    kwargs["instance_profile_arn"] = de.read_string(
+                        _SCHEMA_LAUNCH_PARAMETERS.members["instanceProfileArn"]
+                    )
+
+                case 8:
+                    kwargs["propagated_tags"] = _deserialize_tags_map(
+                        de, _SCHEMA_LAUNCH_PARAMETERS.members["propagatedTags"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LAUNCH_PARAMETERS, consumer=_consumer)
+        if "operating_system" not in kwargs:
+            kwargs["operating_system"] = OperatingSystem._corrected("")
+        if "instance_requirements" not in kwargs:
+            kwargs["instance_requirements"] = InstanceRequirements._smithy_default()
+        return kwargs
+
+
+@dataclass
+class LaunchTemplateSourceLaunchParameters:
+    """The parameters that AgentCore uses to create the launch template."""
+
+    value: LaunchParameters
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LAUNCH_TEMPLATE_SOURCE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_LAUNCH_TEMPLATE_SOURCE.members["launchParameters"], self.value
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=LaunchParameters.deserialize(deserializer))
+
+
+@dataclass
+class LaunchTemplateSourceUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+
+LaunchTemplateSource = Union[
+    LaunchTemplateSourceLaunchParameters | LaunchTemplateSourceUnknown
+]
+"""
+The source of the launch template configuration for a capacity provider.
+The `launchParameters` member specifies the operating system, instance
+requirements, and other settings used to launch instances.
+"""
+
+
+class _LaunchTemplateSourceDeserializer:
+    _result: LaunchTemplateSource | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> LaunchTemplateSource:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_LAUNCH_TEMPLATE_SOURCE, self._consumer)
+
+        if self._result is None:
+            raise SerializationError(
+                "Unions must have exactly one value, but found none."
+            )
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(LaunchTemplateSourceLaunchParameters.deserialize(de))
+
+            case _:
+                self._set_result(
+                    LaunchTemplateSourceUnknown(tag=schema.expect_member_name())
+                )
+
+    def _set_result(self, value: LaunchTemplateSource) -> None:
+        if self._result is not None:
+            raise SerializationError(
+                "Unions must have exactly one value, but found more than one."
+            )
+        self._result = value
+
+
+@dataclass(kw_only=True)
+class InstanceLifecycleConfiguration:
+    """
+    The configuration that manages the lifecycle of instances in a capacity
+    provider, including idle timeout and maximum lifetime.
+    """
+
+    idle_instance_timeout: int | None = None
+    """
+    The number of seconds an instance can remain idle before it is stopped.
+    An instance is considered idle when all of its agents are idle. The
+    default is 900 seconds (15 minutes).
+    """
+
+    max_lifetime: int | None = None
+    """
+    The maximum lifetime of an instance, in seconds. When an instance
+    reaches this limit, the service terminates it regardless of activity.
+    The default is 28800 seconds (8 hours). The maximum is 1209600 seconds
+    (14 days).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_INSTANCE_LIFECYCLE_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.idle_instance_timeout is not None:
+            serializer.write_integer(
+                _SCHEMA_INSTANCE_LIFECYCLE_CONFIGURATION.members["idleInstanceTimeout"],
+                self.idle_instance_timeout,
+            )
+
+        if self.max_lifetime is not None:
+            serializer.write_integer(
+                _SCHEMA_INSTANCE_LIFECYCLE_CONFIGURATION.members["maxLifetime"],
+                self.max_lifetime,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["idle_instance_timeout"] = de.read_integer(
+                        _SCHEMA_INSTANCE_LIFECYCLE_CONFIGURATION.members[
+                            "idleInstanceTimeout"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["max_lifetime"] = de.read_integer(
+                        _SCHEMA_INSTANCE_LIFECYCLE_CONFIGURATION.members["maxLifetime"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_INSTANCE_LIFECYCLE_CONFIGURATION, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class RootVolumeConfiguration:
+    """
+    The configuration for the root volume of a capacity provider instance.
+    Specify the amount of free space to guarantee on the root volume. The
+    device name and delete-on-termination settings are fixed and cannot be
+    changed.
+    """
+
+    volume_type: EbsVolumeType = EbsVolumeType("gp3")
+    """
+    The Amazon EBS volume type. If you do not specify a type, the default is
+    `gp3`.
+    """
+
+    iops: int | None = None
+    """
+    The number of IOPS to provision. For `gp3`, `io1`, and `io2` volumes,
+    this is the number of IOPS provisioned for the volume. For `gp2`
+    volumes, this sets the baseline IOPS performance. It also controls the
+    rate at which the volume accumulates I/O credits for bursting. Supported
+    values: `gp3`, 3,000--80,000; `io1`, 100--64,000; `io2`, 100--256,000.
+    """
+
+    throughput: int | None = None
+    """
+    The throughput to provision, in MiB/s. Valid only for `gp3` volumes.
+    Valid range: 125--2,000 MiB/s.
+    """
+
+    encrypted: bool | None = None
+    """
+    Specifies whether to encrypt the volume. Encrypted volumes can be
+    attached only to instances that support Amazon EBS encryption. If you
+    create a volume from a snapshot, you cannot specify an encryption value.
+    """
+
+    kms_key_id: str | None = None
+    """
+    The identifier (key ID, key alias, key ARN, or alias ARN) of the
+    customer managed KMS key to use for Amazon EBS encryption.
+    """
+
+    free_space_gi_b: int | None = None
+    """
+    The free space guaranteed on the root volume, in GiB. AgentCore adds the
+    operating system overhead on top of this value. The default is 8 GiB.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ROOT_VOLUME_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["volumeType"], self.volume_type
+        )
+        if self.iops is not None:
+            serializer.write_integer(
+                _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["iops"], self.iops
+            )
+
+        if self.throughput is not None:
+            serializer.write_integer(
+                _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["throughput"], self.throughput
+            )
+
+        if self.encrypted is not None:
+            serializer.write_boolean(
+                _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["encrypted"], self.encrypted
+            )
+
+        if self.kms_key_id is not None:
+            serializer.write_string(
+                _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["kmsKeyId"], self.kms_key_id
+            )
+
+        if self.free_space_gi_b is not None:
+            serializer.write_integer(
+                _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["freeSpaceGiB"],
+                self.free_space_gi_b,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["volume_type"] = EbsVolumeType(
+                        de.read_string(
+                            _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["volumeType"]
+                        )
+                    )
+
+                case 1:
+                    kwargs["iops"] = de.read_integer(
+                        _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["iops"]
+                    )
+
+                case 2:
+                    kwargs["throughput"] = de.read_integer(
+                        _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["throughput"]
+                    )
+
+                case 3:
+                    kwargs["encrypted"] = de.read_boolean(
+                        _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["encrypted"]
+                    )
+
+                case 4:
+                    kwargs["kms_key_id"] = de.read_string(
+                        _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["kmsKeyId"]
+                    )
+
+                case 5:
+                    kwargs["free_space_gi_b"] = de.read_integer(
+                        _SCHEMA_ROOT_VOLUME_CONFIGURATION.members["freeSpaceGiB"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ROOT_VOLUME_CONFIGURATION, consumer=_consumer)
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class EbsVolumeConfiguration:
+    """
+    The configuration for an Amazon EBS-backed persistent volume. The
+    service creates persistent volumes when a session first launches, and
+    the volumes survive instance termination. The volumes persist until you
+    delete the session.
+    """
+
+    name: str
+    """
+    The logical name of the volume. Use this name to reference the volume
+    when you mount it into an agent runtime.
+    """
+
+    size_gi_b: int
+    """The size of the volume, in GiB."""
+
+    volume_type: EbsVolumeType = EbsVolumeType("gp3")
+    """
+    The Amazon EBS volume type. If you do not specify a type, the default is
+    `gp3`.
+    """
+
+    iops: int | None = None
+    """
+    The number of IOPS to provision. Valid only for `gp3`, `io1`, and `io2`
+    volumes.
+    """
+
+    throughput: int | None = None
+    """The throughput, in MiB/s. Valid only for `gp3` volumes."""
+
+    encrypted: bool | None = None
+    """
+    Specifies whether to encrypt the volume. If `true`, the service encrypts
+    the volume with the KMS key that you specify in `kmsKeyId`, or the
+    default KMS key for Amazon EBS if you do not specify one. The default is
+    `true`.
+    """
+
+    kms_key_id: str | None = None
+    """The identifier of the KMS key to use for encryption."""
+
+    snapshot_id: str | None = None
+    """
+    An optional Amazon EBS snapshot ID. If provided, the volume is
+    initialized from this snapshot the first time it is created. On
+    subsequent restarts, the existing volume is used and the snapshot is
+    ignored.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EBS_VOLUME_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_EBS_VOLUME_CONFIGURATION.members["name"], self.name
+        )
+        serializer.write_integer(
+            _SCHEMA_EBS_VOLUME_CONFIGURATION.members["sizeGiB"], self.size_gi_b
+        )
+        serializer.write_string(
+            _SCHEMA_EBS_VOLUME_CONFIGURATION.members["volumeType"], self.volume_type
+        )
+        if self.iops is not None:
+            serializer.write_integer(
+                _SCHEMA_EBS_VOLUME_CONFIGURATION.members["iops"], self.iops
+            )
+
+        if self.throughput is not None:
+            serializer.write_integer(
+                _SCHEMA_EBS_VOLUME_CONFIGURATION.members["throughput"], self.throughput
+            )
+
+        if self.encrypted is not None:
+            serializer.write_boolean(
+                _SCHEMA_EBS_VOLUME_CONFIGURATION.members["encrypted"], self.encrypted
+            )
+
+        if self.kms_key_id is not None:
+            serializer.write_string(
+                _SCHEMA_EBS_VOLUME_CONFIGURATION.members["kmsKeyId"], self.kms_key_id
+            )
+
+        if self.snapshot_id is not None:
+            serializer.write_string(
+                _SCHEMA_EBS_VOLUME_CONFIGURATION.members["snapshotId"], self.snapshot_id
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = de.read_string(
+                        _SCHEMA_EBS_VOLUME_CONFIGURATION.members["name"]
+                    )
+
+                case 1:
+                    kwargs["size_gi_b"] = de.read_integer(
+                        _SCHEMA_EBS_VOLUME_CONFIGURATION.members["sizeGiB"]
+                    )
+
+                case 2:
+                    kwargs["volume_type"] = EbsVolumeType(
+                        de.read_string(
+                            _SCHEMA_EBS_VOLUME_CONFIGURATION.members["volumeType"]
+                        )
+                    )
+
+                case 3:
+                    kwargs["iops"] = de.read_integer(
+                        _SCHEMA_EBS_VOLUME_CONFIGURATION.members["iops"]
+                    )
+
+                case 4:
+                    kwargs["throughput"] = de.read_integer(
+                        _SCHEMA_EBS_VOLUME_CONFIGURATION.members["throughput"]
+                    )
+
+                case 5:
+                    kwargs["encrypted"] = de.read_boolean(
+                        _SCHEMA_EBS_VOLUME_CONFIGURATION.members["encrypted"]
+                    )
+
+                case 6:
+                    kwargs["kms_key_id"] = de.read_string(
+                        _SCHEMA_EBS_VOLUME_CONFIGURATION.members["kmsKeyId"]
+                    )
+
+                case 7:
+                    kwargs["snapshot_id"] = de.read_string(
+                        _SCHEMA_EBS_VOLUME_CONFIGURATION.members["snapshotId"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_EBS_VOLUME_CONFIGURATION, consumer=_consumer)
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "size_gi_b" not in kwargs:
+            kwargs["size_gi_b"] = 0
+        return kwargs
+
+
+@dataclass
+class VolumeConfigurationEbsConfiguration:
+    """The configuration for an Amazon EBS-backed persistent volume."""
+
+    value: EbsVolumeConfiguration
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_VOLUME_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_VOLUME_CONFIGURATION.members["ebsConfiguration"], self.value
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=EbsVolumeConfiguration.deserialize(deserializer))
+
+
+@dataclass
+class VolumeConfigurationUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+
+VolumeConfiguration = Union[
+    VolumeConfigurationEbsConfiguration | VolumeConfigurationUnknown
+]
+"""
+The configuration for a persistent volume attached to a capacity
+provider. This structure defines the storage backing for the persistent
+volumes used by agents that run on capacity provider instances.
+"""
+
+
+class _VolumeConfigurationDeserializer:
+    _result: VolumeConfiguration | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> VolumeConfiguration:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_VOLUME_CONFIGURATION, self._consumer)
+
+        if self._result is None:
+            raise SerializationError(
+                "Unions must have exactly one value, but found none."
+            )
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(VolumeConfigurationEbsConfiguration.deserialize(de))
+
+            case _:
+                self._set_result(
+                    VolumeConfigurationUnknown(tag=schema.expect_member_name())
+                )
+
+    def _set_result(self, value: VolumeConfiguration) -> None:
+        if self._result is not None:
+            raise SerializationError(
+                "Unions must have exactly one value, but found more than one."
+            )
+        self._result = value
+
+
+def _serialize_volume_configuration_list(
+    serializer: ShapeSerializer, schema: Schema, value: list[VolumeConfiguration]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_volume_configuration_list(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[VolumeConfiguration]:
+    result: list[VolumeConfiguration] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(_VolumeConfigurationDeserializer().deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+def _serialize_security_group_id_list(
+    serializer: ShapeSerializer, schema: Schema, value: list[str]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+
+def _deserialize_security_group_id_list(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+def _serialize_subnet_id_list(
+    serializer: ShapeSerializer, schema: Schema, value: list[str]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+
+def _deserialize_subnet_id_list(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+@dataclass(kw_only=True)
+class VpcConfiguration:
+    """The VPC configuration for launching Amazon EC2 instances."""
+
+    subnets: list[str]
+    """
+    The IDs of the subnets in which to launch instances. You must specify at
+    least one subnet.
+    """
+
+    security_groups: list[str]
+    """
+    The IDs of the security groups to associate with the instances. You must
+    specify at least one security group.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_VPC_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        _serialize_subnet_id_list(
+            serializer, _SCHEMA_VPC_CONFIGURATION.members["subnets"], self.subnets
+        )
+        _serialize_security_group_id_list(
+            serializer,
+            _SCHEMA_VPC_CONFIGURATION.members["securityGroups"],
+            self.security_groups,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["subnets"] = _deserialize_subnet_id_list(
+                        de, _SCHEMA_VPC_CONFIGURATION.members["subnets"]
+                    )
+
+                case 1:
+                    kwargs["security_groups"] = _deserialize_security_group_id_list(
+                        de, _SCHEMA_VPC_CONFIGURATION.members["securityGroups"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_VPC_CONFIGURATION, consumer=_consumer)
+        if "subnets" not in kwargs:
+            kwargs["subnets"] = []
+        if "security_groups" not in kwargs:
+            kwargs["security_groups"] = []
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(subnets=[], security_groups=[])
+
+
+@dataclass(kw_only=True)
+class Ec2Configuration:
+    """
+    The configuration for Amazon EC2-based compute, including the launch
+    template source, networking, storage volumes, and instance lifecycle
+    settings.
+    """
+
+    launch_template_source: LaunchTemplateSource
+    """
+    The source of the launch template configuration that defines how
+    instances are launched.
+    """
+
+    vpc_configuration: VpcConfiguration
+    """
+    The VPC configuration for launching instances, including subnets and
+    security groups.
+    """
+
+    volumes: list[VolumeConfiguration] | None = None
+    """
+    The named persistent Amazon EBS volumes for the capacity provider. A
+    capacity provider can define up to five volumes.
+    """
+
+    lifecycle_configuration: InstanceLifecycleConfiguration | None = None
+    """The lifecycle configuration for instances in the capacity provider."""
+
+    root_volume: RootVolumeConfiguration | None = None
+    """
+    The configuration for the instance root volume. Specify the amount of
+    free space to guarantee and, optionally, the Amazon EBS performance and
+    encryption settings. The device name and delete-on-termination behavior
+    are not configurable.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EC2_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_EC2_CONFIGURATION.members["launchTemplateSource"],
+            self.launch_template_source,
+        )
+        serializer.write_struct(
+            _SCHEMA_EC2_CONFIGURATION.members["vpcConfiguration"],
+            self.vpc_configuration,
+        )
+        if self.volumes is not None:
+            _serialize_volume_configuration_list(
+                serializer, _SCHEMA_EC2_CONFIGURATION.members["volumes"], self.volumes
+            )
+
+        if self.lifecycle_configuration is not None:
+            serializer.write_struct(
+                _SCHEMA_EC2_CONFIGURATION.members["lifecycleConfiguration"],
+                self.lifecycle_configuration,
+            )
+
+        if self.root_volume is not None:
+            serializer.write_struct(
+                _SCHEMA_EC2_CONFIGURATION.members["rootVolume"], self.root_volume
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["launch_template_source"] = (
+                        _LaunchTemplateSourceDeserializer().deserialize(de)
+                    )
+
+                case 1:
+                    kwargs["vpc_configuration"] = VpcConfiguration.deserialize(de)
+
+                case 2:
+                    kwargs["volumes"] = _deserialize_volume_configuration_list(
+                        de, _SCHEMA_EC2_CONFIGURATION.members["volumes"]
+                    )
+
+                case 3:
+                    kwargs["lifecycle_configuration"] = (
+                        InstanceLifecycleConfiguration.deserialize(de)
+                    )
+
+                case 4:
+                    kwargs["root_volume"] = RootVolumeConfiguration.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_EC2_CONFIGURATION, consumer=_consumer)
+        if "launch_template_source" not in kwargs:
+            kwargs["launch_template_source"] = LaunchTemplateSourceUnknown(tag="")
+        if "vpc_configuration" not in kwargs:
+            kwargs["vpc_configuration"] = VpcConfiguration._smithy_default()
+        return kwargs
+
+
+@dataclass
+class ComputeConfigurationEc2Configuration:
+    """The Amazon EC2 compute configuration for the capacity provider."""
+
+    value: Ec2Configuration
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_COMPUTE_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_COMPUTE_CONFIGURATION.members["ec2Configuration"], self.value
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=Ec2Configuration.deserialize(deserializer))
+
+
+@dataclass
+class ComputeConfigurationUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+
+ComputeConfiguration = Union[
+    ComputeConfigurationEc2Configuration | ComputeConfigurationUnknown
+]
+"""
+The compute configuration for a capacity provider. This structure
+defines the type and settings of the compute resources used to launch
+instances.
+"""
+
+
+class _ComputeConfigurationDeserializer:
+    _result: ComputeConfiguration | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> ComputeConfiguration:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_COMPUTE_CONFIGURATION, self._consumer)
+
+        if self._result is None:
+            raise SerializationError(
+                "Unions must have exactly one value, but found none."
+            )
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(ComputeConfigurationEc2Configuration.deserialize(de))
+
+            case _:
+                self._set_result(
+                    ComputeConfigurationUnknown(tag=schema.expect_member_name())
+                )
+
+    def _set_result(self, value: ComputeConfiguration) -> None:
+        if self._result is not None:
+            raise SerializationError(
+                "Unions must have exactly one value, but found more than one."
+            )
+        self._result = value
+
+
+@dataclass(kw_only=True)
+class PermissionsConfiguration:
+    """
+    The permissions configuration for a capacity provider. This specifies
+    the IAM role that AgentCore uses to manage the Amazon EC2 instances for
+    the capacity provider on your behalf.
+    """
+
+    capacity_provider_operator_role_arn: str
+    """
+    The Amazon Resource Name (ARN) of the IAM role that AgentCore assumes to
+    manage the capacity provider, including launching, tagging, and
+    terminating instances and their network interfaces. We recommend scoping
+    this role to the minimum permissions that your workloads require.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_PERMISSIONS_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_PERMISSIONS_CONFIGURATION.members[
+                "capacityProviderOperatorRoleArn"
+            ],
+            self.capacity_provider_operator_role_arn,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_operator_role_arn"] = de.read_string(
+                        _SCHEMA_PERMISSIONS_CONFIGURATION.members[
+                            "capacityProviderOperatorRoleArn"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_PERMISSIONS_CONFIGURATION, consumer=_consumer)
+        if "capacity_provider_operator_role_arn" not in kwargs:
+            kwargs["capacity_provider_operator_role_arn"] = ""
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(capacity_provider_operator_role_arn="")
+
+
+@dataclass(kw_only=True)
+class CreateCapacityProviderInput:
+    """Dataclass for CreateCapacityProviderInput structure."""
+
+    name: str | None = None
+    """
+    The name of the capacity provider. The name must be unique within your
+    account.
+    """
+
+    description: str | None = field(repr=False, default=None)
+    """
+    An optional description of the capacity provider. If you don't specify
+    a description, the service creates the capacity provider without one.
+    """
+
+    permissions_configuration: PermissionsConfiguration | None = None
+    """
+    The permissions configuration for the capacity provider. This specifies
+    the IAM role that AgentCore uses to manage the Amazon EC2 instances on
+    your behalf.
+    """
+
+    client_token: str | None = None
+    """
+    A unique, case-sensitive identifier to ensure that the API request
+    completes no more than one time. If you don't specify this field, a
+    value is randomly generated for you. If this token matches a previous
+    request, the service ignores the request, but doesn't return an error.
+    For more information, see [Ensuring
+    idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+    """
+
+    tags: dict[str, str] | None = None
+    """
+    A map of tag keys and values to associate with the capacity provider. If
+    you don't specify tags, the capacity provider is created with no tags.
+    """
+
+    compute_configuration: ComputeConfiguration | None = None
+    """
+    The compute configuration for the capacity provider. This defines the
+    Amazon EC2 compute resources used to launch instances: the operating
+    system, allowed instance types, networking, and storage.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.name is not None:
+            serializer.write_string(
+                _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["name"], self.name
+            )
+
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["description"],
+                self.description,
+            )
+
+        if self.permissions_configuration is not None:
+            serializer.write_struct(
+                _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members[
+                    "permissionsConfiguration"
+                ],
+                self.permissions_configuration,
+            )
+
+        if self.client_token is not None:
+            serializer.write_string(
+                _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["clientToken"],
+                self.client_token,
+            )
+
+        if self.tags is not None:
+            _serialize_tags_map(
+                serializer,
+                _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["tags"],
+                self.tags,
+            )
+
+        if self.compute_configuration is not None:
+            serializer.write_struct(
+                _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["computeConfiguration"],
+                self.compute_configuration,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = de.read_string(
+                        _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["name"]
+                    )
+
+                case 1:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["description"]
+                    )
+
+                case 2:
+                    kwargs["permissions_configuration"] = (
+                        PermissionsConfiguration.deserialize(de)
+                    )
+
+                case 3:
+                    kwargs["client_token"] = de.read_string(
+                        _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["clientToken"]
+                    )
+
+                case 4:
+                    kwargs["tags"] = _deserialize_tags_map(
+                        de, _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT.members["tags"]
+                    )
+
+                case 5:
+                    kwargs["compute_configuration"] = (
+                        _ComputeConfigurationDeserializer().deserialize(de)
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+class CapacityProviderStatus(UnknownEnumMixin, StrEnum):
+    """
+    The status of a capacity provider. Possible values:
+
+    - `CREATING` -- The service is creating the capacity provider and
+      validating its configuration.
+
+    - `CREATE_FAILED` -- The service could not create the capacity provider.
+      For details, see `statusCode` and `statusReason`.
+
+    - `UPDATING` -- The service is updating the capacity provider.
+
+    - `UPDATE_FAILED` -- The service could not update the capacity provider.
+      For details, see `statusCode` and `statusReason`.
+
+    - `READY` -- The capacity provider is available for use.
+
+    - `DELETING` -- The service is deleting the capacity provider.
+
+    - `DELETE_FAILED` -- The service could not delete the capacity provider.
+      You can retry the deletion.
+    """
+
+    CREATING = "CREATING"
+    CREATE_FAILED = "CREATE_FAILED"
+    UPDATING = "UPDATING"
+    UPDATE_FAILED = "UPDATE_FAILED"
+    READY = "READY"
+    DELETING = "DELETING"
+    DELETE_FAILED = "DELETE_FAILED"
+
+
+@dataclass(kw_only=True)
+class CreateCapacityProviderOutput:
+    """Dataclass for CreateCapacityProviderOutput structure."""
+
+    capacity_provider_id: str
+    """The unique identifier of the created capacity provider."""
+
+    capacity_provider_arn: str
+    """The Amazon Resource Name (ARN) of the capacity provider."""
+
+    name: str
+    """The name of the capacity provider."""
+
+    status: CapacityProviderStatus
+    """
+    The current status of the capacity provider. For possible values, see
+    `CapacityProviderStatus`.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT.members["capacityProviderId"],
+            self.capacity_provider_id,
+        )
+        serializer.write_string(
+            _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT.members["capacityProviderArn"],
+            self.capacity_provider_arn,
+        )
+        serializer.write_string(
+            _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT.members["name"], self.name
+        )
+        serializer.write_string(
+            _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT.members["status"], self.status
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["capacity_provider_arn"] = de.read_string(
+                        _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT.members[
+                            "capacityProviderArn"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["name"] = de.read_string(
+                        _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT.members["name"]
+                    )
+
+                case 3:
+                    kwargs["status"] = CapacityProviderStatus(
+                        de.read_string(
+                            _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT.members["status"]
+                        )
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT, consumer=_consumer
+        )
+        if "capacity_provider_id" not in kwargs:
+            kwargs["capacity_provider_id"] = ""
+        if "capacity_provider_arn" not in kwargs:
+            kwargs["capacity_provider_arn"] = ""
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = CapacityProviderStatus._corrected("")
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class RetryableConflictException(ServiceError):
+    """
+    The operation failed because of a conflicting request. Retry the
+    request.
+    """
+
+    fault: Literal["client", "server"] | None = "client"
+    is_retry_safe: bool | None = True
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_RETRYABLE_CONFLICT_EXCEPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_RETRYABLE_CONFLICT_EXCEPTION.members["message"], self.message
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["message"] = de.read_string(
+                        _SCHEMA_RETRYABLE_CONFLICT_EXCEPTION.members["message"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_RETRYABLE_CONFLICT_EXCEPTION, consumer=_consumer
+        )
+        return kwargs
+
+
+CREATE_CAPACITY_PROVIDER = APIOperation(
+    input=CreateCapacityProviderInput,
+    output=CreateCapacityProviderOutput,
+    schema=_SCHEMA_CREATE_CAPACITY_PROVIDER,
+    input_schema=_SCHEMA_CREATE_CAPACITY_PROVIDER_INPUT,
+    output_schema=_SCHEMA_CREATE_CAPACITY_PROVIDER_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ConflictException"
+            ): ConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#RetryableConflictException"
+            ): RetryableConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ServiceQuotaExceededException"
+            ): ServiceQuotaExceededException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_CONFLICT_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_RETRYABLE_CONFLICT_EXCEPTION,
+        _SCHEMA_SERVICE_QUOTA_EXCEEDED_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class DeleteCapacityProviderInput:
+    """Dataclass for DeleteCapacityProviderInput structure."""
+
+    capacity_provider_id: str | None = None
+    """The unique identifier of the capacity provider to delete."""
+
+    client_token: str | None = None
+    """
+    A unique, case-sensitive identifier to ensure that the API request
+    completes no more than one time. If you don't specify this field, a
+    value is randomly generated for you. If this token matches a previous
+    request, the service ignores the request, but doesn't return an error.
+    For more information, see [Ensuring
+    idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_DELETE_CAPACITY_PROVIDER_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.capacity_provider_id is not None:
+            serializer.write_string(
+                _SCHEMA_DELETE_CAPACITY_PROVIDER_INPUT.members["capacityProviderId"],
+                self.capacity_provider_id,
+            )
+
+        if self.client_token is not None:
+            serializer.write_string(
+                _SCHEMA_DELETE_CAPACITY_PROVIDER_INPUT.members["clientToken"],
+                self.client_token,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_DELETE_CAPACITY_PROVIDER_INPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["client_token"] = de.read_string(
+                        _SCHEMA_DELETE_CAPACITY_PROVIDER_INPUT.members["clientToken"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class DeleteCapacityProviderOutput:
+    """Dataclass for DeleteCapacityProviderOutput structure."""
+
+    capacity_provider_id: str
+    """The unique identifier of the deleted capacity provider."""
+
+    status: CapacityProviderStatus
+    """
+    The current status of the capacity provider. For possible values, see
+    `CapacityProviderStatus`.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_DELETE_CAPACITY_PROVIDER_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_OUTPUT.members["capacityProviderId"],
+            self.capacity_provider_id,
+        )
+        serializer.write_string(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_OUTPUT.members["status"], self.status
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_DELETE_CAPACITY_PROVIDER_OUTPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["status"] = CapacityProviderStatus(
+                        de.read_string(
+                            _SCHEMA_DELETE_CAPACITY_PROVIDER_OUTPUT.members["status"]
+                        )
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_OUTPUT, consumer=_consumer
+        )
+        if "capacity_provider_id" not in kwargs:
+            kwargs["capacity_provider_id"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = CapacityProviderStatus._corrected("")
+        return kwargs
+
+
+DELETE_CAPACITY_PROVIDER = APIOperation(
+    input=DeleteCapacityProviderInput,
+    output=DeleteCapacityProviderOutput,
+    schema=_SCHEMA_DELETE_CAPACITY_PROVIDER,
+    input_schema=_SCHEMA_DELETE_CAPACITY_PROVIDER_INPUT,
+    output_schema=_SCHEMA_DELETE_CAPACITY_PROVIDER_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ConflictException"
+            ): ConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#RetryableConflictException"
+            ): RetryableConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_CONFLICT_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_RETRYABLE_CONFLICT_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class GetCapacityProviderInput:
+    """Dataclass for GetCapacityProviderInput structure."""
+
+    capacity_provider_id: str | None = None
+    """The unique identifier of the capacity provider."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_CAPACITY_PROVIDER_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.capacity_provider_id is not None:
+            serializer.write_string(
+                _SCHEMA_GET_CAPACITY_PROVIDER_INPUT.members["capacityProviderId"],
+                self.capacity_provider_id,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_GET_CAPACITY_PROVIDER_INPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_GET_CAPACITY_PROVIDER_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+class CapacityProviderStatusCode(UnknownEnumMixin, StrEnum):
+    """
+    A reason code for a capacity provider that is not in the `READY` state.
+    Possible values:
+
+    - `VALIDATION_ERROR` -- A configuration error prevented the operation.
+      For example, missing permissions, invalid parameters, or a naming
+      conflict.
+
+    - `QUOTA_EXCEEDED` -- An Amazon EC2 resource quota was exceeded. Request
+      a limit increase or remove unused resources.
+
+    - `THROTTLED` -- The request was throttled. Retry after a short delay.
+
+    - `INTERNAL_SERVER_EXCEPTION` -- An internal error occurred.
+    """
+
+    VALIDATION_ERROR = "VALIDATION_ERROR"
+    QUOTA_EXCEEDED = "QUOTA_EXCEEDED"
+    THROTTLED = "THROTTLED"
+    INTERNAL_SERVER_EXCEPTION = "INTERNAL_SERVER_EXCEPTION"
+
+
+@dataclass(kw_only=True)
+class GetCapacityProviderOutput:
+    """Dataclass for GetCapacityProviderOutput structure."""
+
+    capacity_provider_id: str
+    """The unique identifier of the capacity provider."""
+
+    capacity_provider_arn: str
+    """The Amazon Resource Name (ARN) of the capacity provider."""
+
+    name: str
+    """The name of the capacity provider."""
+
+    status: CapacityProviderStatus
+    """
+    The current status of the capacity provider. For possible values, see
+    `CapacityProviderStatus`.
+    """
+
+    permissions_configuration: PermissionsConfiguration
+    """The permissions configuration for the capacity provider."""
+
+    compute_configuration: ComputeConfiguration
+    """The compute configuration for the capacity provider."""
+
+    created_at: datetime
+    """The timestamp when the capacity provider was created."""
+
+    last_updated_at: datetime
+    """The timestamp when the capacity provider was last updated."""
+
+    description: str | None = field(repr=False, default=None)
+    """The description of the capacity provider, if one was provided."""
+
+    status_code: CapacityProviderStatusCode | None = None
+    """
+    A reason code for a capacity provider that is not in the `READY` state.
+    Use this code for programmatic error handling.
+    """
+
+    status_reason: str | None = None
+    """
+    A human-readable message that describes why the capacity provider is not
+    in the `READY` state. Because these messages can change, use
+    `statusCode` for programmatic error handling.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["capacityProviderId"],
+            self.capacity_provider_id,
+        )
+        serializer.write_string(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["capacityProviderArn"],
+            self.capacity_provider_arn,
+        )
+        serializer.write_string(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["name"], self.name
+        )
+        serializer.write_string(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["status"], self.status
+        )
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["description"],
+                self.description,
+            )
+
+        if self.status_code is not None:
+            serializer.write_string(
+                _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["statusCode"],
+                self.status_code,
+            )
+
+        if self.status_reason is not None:
+            serializer.write_string(
+                _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["statusReason"],
+                self.status_reason,
+            )
+
+        serializer.write_struct(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["permissionsConfiguration"],
+            self.permissions_configuration,
+        )
+        serializer.write_struct(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["computeConfiguration"],
+            self.compute_configuration,
+        )
+        serializer.write_timestamp(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["createdAt"], self.created_at
+        )
+        serializer.write_timestamp(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["lastUpdatedAt"],
+            self.last_updated_at,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["capacity_provider_arn"] = de.read_string(
+                        _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members[
+                            "capacityProviderArn"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["name"] = de.read_string(
+                        _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["name"]
+                    )
+
+                case 3:
+                    kwargs["status"] = CapacityProviderStatus(
+                        de.read_string(
+                            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["status"]
+                        )
+                    )
+
+                case 4:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["description"]
+                    )
+
+                case 5:
+                    kwargs["status_code"] = CapacityProviderStatusCode(
+                        de.read_string(
+                            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["statusCode"]
+                        )
+                    )
+
+                case 6:
+                    kwargs["status_reason"] = de.read_string(
+                        _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["statusReason"]
+                    )
+
+                case 7:
+                    kwargs["permissions_configuration"] = (
+                        PermissionsConfiguration.deserialize(de)
+                    )
+
+                case 8:
+                    kwargs["compute_configuration"] = (
+                        _ComputeConfigurationDeserializer().deserialize(de)
+                    )
+
+                case 9:
+                    kwargs["created_at"] = de.read_timestamp(
+                        _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["createdAt"]
+                    )
+
+                case 10:
+                    kwargs["last_updated_at"] = de.read_timestamp(
+                        _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT.members["lastUpdatedAt"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT, consumer=_consumer
+        )
+        if "capacity_provider_id" not in kwargs:
+            kwargs["capacity_provider_id"] = ""
+        if "capacity_provider_arn" not in kwargs:
+            kwargs["capacity_provider_arn"] = ""
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = CapacityProviderStatus._corrected("")
+        if "permissions_configuration" not in kwargs:
+            kwargs["permissions_configuration"] = (
+                PermissionsConfiguration._smithy_default()
+            )
+        if "compute_configuration" not in kwargs:
+            kwargs["compute_configuration"] = ComputeConfigurationUnknown(tag="")
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "last_updated_at" not in kwargs:
+            kwargs["last_updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+
+GET_CAPACITY_PROVIDER = APIOperation(
+    input=GetCapacityProviderInput,
+    output=GetCapacityProviderOutput,
+    schema=_SCHEMA_GET_CAPACITY_PROVIDER,
+    input_schema=_SCHEMA_GET_CAPACITY_PROVIDER_INPUT,
+    output_schema=_SCHEMA_GET_CAPACITY_PROVIDER_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class ListAgentRuntimeVersionsByCapacityProviderInput:
+    """Dataclass for ListAgentRuntimeVersionsByCapacityProviderInput structure."""
+
+    capacity_provider_id: str | None = None
+    """The unique identifier of the capacity provider."""
+
+    max_results: int | None = None
+    """
+    The maximum number of results to return in the response. If the total
+    number of results is greater than this value, use the token returned in
+    the response in the `nextToken` field when making another request to
+    return the next batch of results.
+    """
+
+    next_token: str | None = None
+    """
+    If the total number of results is greater than the `maxResults` value
+    provided in the request, enter the token returned in the `nextToken`
+    field in the response in this field to return the next batch of results.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT, self
+        )
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.capacity_provider_id is not None:
+            serializer.write_string(
+                _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT.members[
+                    "capacityProviderId"
+                ],
+                self.capacity_provider_id,
+            )
+
+        if self.max_results is not None:
+            serializer.write_integer(
+                _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT.members[
+                    "maxResults"
+                ],
+                self.max_results,
+            )
+
+        if self.next_token is not None:
+            serializer.write_string(
+                _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT.members[
+                    "nextToken"
+                ],
+                self.next_token,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["max_results"] = de.read_integer(
+                        _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT.members[
+                            "maxResults"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["next_token"] = de.read_string(
+                        _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT.members[
+                            "nextToken"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT,
+            consumer=_consumer,
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class ListAgentRuntimeVersionsByCapacityProviderOutput:
+    """
+    Dataclass for ListAgentRuntimeVersionsByCapacityProviderOutput
+    structure.
+    """
+
+    agent_runtimes: list[AgentRuntimeVersionSummary]
+    """
+    The list of agent runtime versions that are associated with the capacity
+    provider.
+    """
+
+    next_token: str | None = None
+    """
+    If the total number of results is greater than the `maxResults` value
+    provided in the request, use this token when making another request in
+    the `nextToken` field to return the next batch of results.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT, self
+        )
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        _serialize_agent_runtime_version_summary_list(
+            serializer,
+            _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT.members[
+                "agentRuntimes"
+            ],
+            self.agent_runtimes,
+        )
+        if self.next_token is not None:
+            serializer.write_string(
+                _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT.members[
+                    "nextToken"
+                ],
+                self.next_token,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["agent_runtimes"] = (
+                        _deserialize_agent_runtime_version_summary_list(
+                            de,
+                            _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT.members[
+                                "agentRuntimes"
+                            ],
+                        )
+                    )
+
+                case 1:
+                    kwargs["next_token"] = de.read_string(
+                        _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT.members[
+                            "nextToken"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT,
+            consumer=_consumer,
+        )
+        if "agent_runtimes" not in kwargs:
+            kwargs["agent_runtimes"] = []
+        return kwargs
+
+
+LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER = APIOperation(
+    input=ListAgentRuntimeVersionsByCapacityProviderInput,
+    output=ListAgentRuntimeVersionsByCapacityProviderOutput,
+    schema=_SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER,
+    input_schema=_SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_INPUT,
+    output_schema=_SCHEMA_LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class ListCapacityProvidersInput:
+    """Dataclass for ListCapacityProvidersInput structure."""
+
+    max_results: int | None = None
+    """
+    The maximum number of results to return in the response. If the total
+    number of results is greater than this value, use the token returned in
+    the response in the `nextToken` field when making another request to
+    return the next batch of results.
+    """
+
+    next_token: str | None = None
+    """
+    If the total number of results is greater than the `maxResults` value
+    provided in the request, enter the token returned in the `nextToken`
+    field in the response in this field to return the next batch of results.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_CAPACITY_PROVIDERS_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.max_results is not None:
+            serializer.write_integer(
+                _SCHEMA_LIST_CAPACITY_PROVIDERS_INPUT.members["maxResults"],
+                self.max_results,
+            )
+
+        if self.next_token is not None:
+            serializer.write_string(
+                _SCHEMA_LIST_CAPACITY_PROVIDERS_INPUT.members["nextToken"],
+                self.next_token,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["max_results"] = de.read_integer(
+                        _SCHEMA_LIST_CAPACITY_PROVIDERS_INPUT.members["maxResults"]
+                    )
+
+                case 1:
+                    kwargs["next_token"] = de.read_string(
+                        _SCHEMA_LIST_CAPACITY_PROVIDERS_INPUT.members["nextToken"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_LIST_CAPACITY_PROVIDERS_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class CapacityProviderSummary:
+    """
+    A summary of a capacity provider, as returned by
+    `ListCapacityProviders`. Each summary includes the capacity provider
+    identifier, Amazon Resource Name (ARN), name, status, and last-updated
+    timestamp.
+    """
+
+    capacity_provider_id: str
+    """The unique identifier of the capacity provider."""
+
+    capacity_provider_arn: str
+    """The Amazon Resource Name (ARN) of the capacity provider."""
+
+    name: str
+    """The name of the capacity provider."""
+
+    status: CapacityProviderStatus
+    """
+    The current status of the capacity provider. For possible values, see
+    `CapacityProviderStatus`.
+    """
+
+    last_updated_at: datetime
+    """The timestamp when the capacity provider was last updated."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CAPACITY_PROVIDER_SUMMARY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["capacityProviderId"],
+            self.capacity_provider_id,
+        )
+        serializer.write_string(
+            _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["capacityProviderArn"],
+            self.capacity_provider_arn,
+        )
+        serializer.write_string(
+            _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["name"], self.name
+        )
+        serializer.write_string(
+            _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["status"], self.status
+        )
+        serializer.write_timestamp(
+            _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["lastUpdatedAt"],
+            self.last_updated_at,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["capacityProviderId"]
+                    )
+
+                case 1:
+                    kwargs["capacity_provider_arn"] = de.read_string(
+                        _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["capacityProviderArn"]
+                    )
+
+                case 2:
+                    kwargs["name"] = de.read_string(
+                        _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["name"]
+                    )
+
+                case 3:
+                    kwargs["status"] = CapacityProviderStatus(
+                        de.read_string(
+                            _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["status"]
+                        )
+                    )
+
+                case 4:
+                    kwargs["last_updated_at"] = de.read_timestamp(
+                        _SCHEMA_CAPACITY_PROVIDER_SUMMARY.members["lastUpdatedAt"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CAPACITY_PROVIDER_SUMMARY, consumer=_consumer)
+        if "capacity_provider_id" not in kwargs:
+            kwargs["capacity_provider_id"] = ""
+        if "capacity_provider_arn" not in kwargs:
+            kwargs["capacity_provider_arn"] = ""
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = CapacityProviderStatus._corrected("")
+        if "last_updated_at" not in kwargs:
+            kwargs["last_updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+
+def _serialize_capacity_provider_list(
+    serializer: ShapeSerializer, schema: Schema, value: list[CapacityProviderSummary]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_capacity_provider_list(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[CapacityProviderSummary]:
+    result: list[CapacityProviderSummary] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(CapacityProviderSummary.deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+@dataclass(kw_only=True)
+class ListCapacityProvidersOutput:
+    """Dataclass for ListCapacityProvidersOutput structure."""
+
+    capacity_providers: list[CapacityProviderSummary]
+    """The list of capacity provider summaries."""
+
+    next_token: str | None = None
+    """
+    If the total number of results is greater than the `maxResults` value
+    provided in the request, use this token when making another request in
+    the `nextToken` field to return the next batch of results.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_CAPACITY_PROVIDERS_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        _serialize_capacity_provider_list(
+            serializer,
+            _SCHEMA_LIST_CAPACITY_PROVIDERS_OUTPUT.members["capacityProviders"],
+            self.capacity_providers,
+        )
+        if self.next_token is not None:
+            serializer.write_string(
+                _SCHEMA_LIST_CAPACITY_PROVIDERS_OUTPUT.members["nextToken"],
+                self.next_token,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_providers"] = _deserialize_capacity_provider_list(
+                        de,
+                        _SCHEMA_LIST_CAPACITY_PROVIDERS_OUTPUT.members[
+                            "capacityProviders"
+                        ],
+                    )
+
+                case 1:
+                    kwargs["next_token"] = de.read_string(
+                        _SCHEMA_LIST_CAPACITY_PROVIDERS_OUTPUT.members["nextToken"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_LIST_CAPACITY_PROVIDERS_OUTPUT, consumer=_consumer
+        )
+        if "capacity_providers" not in kwargs:
+            kwargs["capacity_providers"] = []
+        return kwargs
+
+
+LIST_CAPACITY_PROVIDERS = APIOperation(
+    input=ListCapacityProvidersInput,
+    output=ListCapacityProvidersOutput,
+    schema=_SCHEMA_LIST_CAPACITY_PROVIDERS,
+    input_schema=_SCHEMA_LIST_CAPACITY_PROVIDERS_INPUT,
+    output_schema=_SCHEMA_LIST_CAPACITY_PROVIDERS_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class UpdatedDescription:
+    """
+    Wrapper for updating an optional Description field with PATCH semantics.
+    When present in an update request, the description is replaced with
+    optionalValue. When absent, the description is left unchanged. To unset
+    the description, include the wrapper with optionalValue not specified.
+    """
+
+    optional_value: str | None = field(repr=False, default=None)
+    """
+    Represents an optional value that is used to update the human-readable
+    description of the resource. If not specified, it will clear the current
+    description of the resource.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_UPDATED_DESCRIPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.optional_value is not None:
+            serializer.write_string(
+                _SCHEMA_UPDATED_DESCRIPTION.members["optionalValue"],
+                self.optional_value,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["optional_value"] = de.read_string(
+                        _SCHEMA_UPDATED_DESCRIPTION.members["optionalValue"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_UPDATED_DESCRIPTION, consumer=_consumer)
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class UpdateCapacityProviderInput:
+    """Dataclass for UpdateCapacityProviderInput structure."""
+
+    capacity_provider_id: str | None = None
+    """The unique identifier of the capacity provider to update."""
+
+    description: UpdatedDescription | None = None
+    """The updated description of the capacity provider."""
+
+    client_token: str | None = None
+    """
+    A unique, case-sensitive identifier to ensure that the API request
+    completes no more than one time. If you don't specify this field, a
+    value is randomly generated for you. If this token matches a previous
+    request, the service ignores the request, but doesn't return an error.
+    For more information, see [Ensuring
+    idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.capacity_provider_id is not None:
+            serializer.write_string(
+                _SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT.members["capacityProviderId"],
+                self.capacity_provider_id,
+            )
+
+        if self.description is not None:
+            serializer.write_struct(
+                _SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT.members["description"],
+                self.description,
+            )
+
+        if self.client_token is not None:
+            serializer.write_string(
+                _SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT.members["clientToken"],
+                self.client_token,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["description"] = UpdatedDescription.deserialize(de)
+
+                case 2:
+                    kwargs["client_token"] = de.read_string(
+                        _SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT.members["clientToken"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class UpdateCapacityProviderOutput:
+    """Dataclass for UpdateCapacityProviderOutput structure."""
+
+    capacity_provider_id: str
+    """The unique identifier of the capacity provider."""
+
+    capacity_provider_arn: str
+    """The Amazon Resource Name (ARN) of the capacity provider."""
+
+    name: str
+    """The name of the capacity provider."""
+
+    status: CapacityProviderStatus
+    """
+    The current status of the capacity provider. For possible values, see
+    `CapacityProviderStatus`.
+    """
+
+    created_at: datetime
+    """The timestamp when the capacity provider was created."""
+
+    last_updated_at: datetime
+    """The timestamp when the capacity provider was last updated."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["capacityProviderId"],
+            self.capacity_provider_id,
+        )
+        serializer.write_string(
+            _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["capacityProviderArn"],
+            self.capacity_provider_arn,
+        )
+        serializer.write_string(
+            _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["name"], self.name
+        )
+        serializer.write_string(
+            _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["status"], self.status
+        )
+        serializer.write_timestamp(
+            _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["createdAt"],
+            self.created_at,
+        )
+        serializer.write_timestamp(
+            _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["lastUpdatedAt"],
+            self.last_updated_at,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["capacity_provider_arn"] = de.read_string(
+                        _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members[
+                            "capacityProviderArn"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["name"] = de.read_string(
+                        _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["name"]
+                    )
+
+                case 3:
+                    kwargs["status"] = CapacityProviderStatus(
+                        de.read_string(
+                            _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["status"]
+                        )
+                    )
+
+                case 4:
+                    kwargs["created_at"] = de.read_timestamp(
+                        _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["createdAt"]
+                    )
+
+                case 5:
+                    kwargs["last_updated_at"] = de.read_timestamp(
+                        _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT.members["lastUpdatedAt"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT, consumer=_consumer
+        )
+        if "capacity_provider_id" not in kwargs:
+            kwargs["capacity_provider_id"] = ""
+        if "capacity_provider_arn" not in kwargs:
+            kwargs["capacity_provider_arn"] = ""
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = CapacityProviderStatus._corrected("")
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "last_updated_at" not in kwargs:
+            kwargs["last_updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+
+UPDATE_CAPACITY_PROVIDER = APIOperation(
+    input=UpdateCapacityProviderInput,
+    output=UpdateCapacityProviderOutput,
+    schema=_SCHEMA_UPDATE_CAPACITY_PROVIDER,
+    input_schema=_SCHEMA_UPDATE_CAPACITY_PROVIDER_INPUT,
+    output_schema=_SCHEMA_UPDATE_CAPACITY_PROVIDER_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ConflictException"
+            ): ConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#RetryableConflictException"
+            ): RetryableConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_CONFLICT_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_RETRYABLE_CONFLICT_EXCEPTION,
         _SCHEMA_THROTTLING_EXCEPTION,
         _SCHEMA_VALIDATION_EXCEPTION,
     ],
@@ -22112,6 +25816,1897 @@ UPDATE_EVALUATOR = APIOperation(
 )
 
 
+def _serialize_dimension_keys(
+    serializer: ShapeSerializer, schema: Schema, value: list[str]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+
+def _deserialize_dimension_keys(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+class Period(UnknownEnumMixin, StrEnum):
+    """Time period for rate limiting"""
+
+    SECOND = "second"
+    MINUTE = "minute"
+
+
+@dataclass(kw_only=True)
+class RateConfig:
+    """Rate configuration for a metric (requests or tokens)"""
+
+    rate: float
+    """
+    The rate value for the limit. For request limits, this is the number of
+    requests allowed per period. For token limits, this is the number of
+    tokens allowed per period. For connection limits, this is the number of
+    concurrent connections allowed.
+    """
+
+    period: Period
+    """Time period for rate limiting"""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_RATE_CONFIG, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_double(_SCHEMA_RATE_CONFIG.members["rate"], self.rate)
+        serializer.write_string(_SCHEMA_RATE_CONFIG.members["period"], self.period)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate"] = de.read_double(_SCHEMA_RATE_CONFIG.members["rate"])
+
+                case 1:
+                    kwargs["period"] = Period(
+                        de.read_string(_SCHEMA_RATE_CONFIG.members["period"])
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_RATE_CONFIG, consumer=_consumer)
+        if "rate" not in kwargs:
+            kwargs["rate"] = 0.0
+        if "period" not in kwargs:
+            kwargs["period"] = Period._corrected("")
+        return kwargs
+
+
+def _serialize_rate_configs(
+    serializer: ShapeSerializer, schema: Schema, value: list[RateConfig]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_rate_configs(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[RateConfig]:
+    result: list[RateConfig] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(RateConfig.deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+def _serialize_dimensions(
+    serializer: ShapeSerializer, schema: Schema, value: dict[str, str]
+) -> None:
+    with serializer.begin_map(schema, len(value)) as m:
+        value_schema = schema.members["value"]
+        for k, v in value.items():
+            m.entry(k, lambda vs: vs.write_string(value_schema, v))
+
+
+def _deserialize_dimensions(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> dict[str, str]:
+    result: dict[str, str] = {}
+    value_schema = schema.members["value"]
+
+    def _read_value(k: str, d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result[k] = d.read_string(value_schema)
+
+    deserializer.read_map(schema, _read_value)
+    return result
+
+
+@dataclass(kw_only=True)
+class LimitEntry:
+    """
+    A single rule entry within a limit, mapping dimension values to rate
+    configurations
+    """
+
+    dimensions: dict[str, str]
+    """
+    Map of dimension name to dimension value, matching the parent limit's
+    dimensionKeys. Keys must exactly match the dimensionKeys. Values may be
+    \"*\" as a wildcard. \"*\" may only appear at trailing positions
+    (based on dimensionKeys ordering).
+    """
+
+    requests: list[RateConfig] | None = None
+    """Request rate limits (RPS or RPM). Limited to 1 entry for now."""
+
+    tokens: list[RateConfig] | None = None
+    """Token rate limits (TPM). Limited to 1 entry for now. --- P1"""
+
+    connections: list[RateConfig] | None = None
+    """
+    Connection rate limits (per second only). Limited to 1 entry for now.
+    --- P2
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIMIT_ENTRY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        _serialize_dimensions(
+            serializer, _SCHEMA_LIMIT_ENTRY.members["dimensions"], self.dimensions
+        )
+        if self.requests is not None:
+            _serialize_rate_configs(
+                serializer, _SCHEMA_LIMIT_ENTRY.members["requests"], self.requests
+            )
+
+        if self.tokens is not None:
+            _serialize_rate_configs(
+                serializer, _SCHEMA_LIMIT_ENTRY.members["tokens"], self.tokens
+            )
+
+        if self.connections is not None:
+            _serialize_rate_configs(
+                serializer, _SCHEMA_LIMIT_ENTRY.members["connections"], self.connections
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["dimensions"] = _deserialize_dimensions(
+                        de, _SCHEMA_LIMIT_ENTRY.members["dimensions"]
+                    )
+
+                case 1:
+                    kwargs["requests"] = _deserialize_rate_configs(
+                        de, _SCHEMA_LIMIT_ENTRY.members["requests"]
+                    )
+
+                case 2:
+                    kwargs["tokens"] = _deserialize_rate_configs(
+                        de, _SCHEMA_LIMIT_ENTRY.members["tokens"]
+                    )
+
+                case 3:
+                    kwargs["connections"] = _deserialize_rate_configs(
+                        de, _SCHEMA_LIMIT_ENTRY.members["connections"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LIMIT_ENTRY, consumer=_consumer)
+        if "dimensions" not in kwargs:
+            kwargs["dimensions"] = {}
+        return kwargs
+
+
+def _serialize_limit_entries(
+    serializer: ShapeSerializer, schema: Schema, value: list[LimitEntry]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_limit_entries(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[LimitEntry]:
+    result: list[LimitEntry] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(LimitEntry.deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+@dataclass(kw_only=True)
+class BatchPutLimitEntry:
+    """
+    A limit definition within a BatchPut request (rateLimitId used for
+    upsert matching)
+    """
+
+    dimension_keys: list[str]
+    """Ordered list of dimension key names defining the scope of a limit"""
+
+    entries: list[LimitEntry]
+    """List of rule entries within a limit"""
+
+    rate_limit_id: str | None = None
+    """
+    Optional --- if provided, used for upsert matching against existing
+    limits.
+    """
+
+    description: str | None = None
+    """Optional human-readable description for this limit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_BATCH_PUT_LIMIT_ENTRY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.rate_limit_id is not None:
+            serializer.write_string(
+                _SCHEMA_BATCH_PUT_LIMIT_ENTRY.members["rateLimitId"], self.rate_limit_id
+            )
+
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_BATCH_PUT_LIMIT_ENTRY.members["description"], self.description
+            )
+
+        _serialize_dimension_keys(
+            serializer,
+            _SCHEMA_BATCH_PUT_LIMIT_ENTRY.members["dimensionKeys"],
+            self.dimension_keys,
+        )
+        _serialize_limit_entries(
+            serializer, _SCHEMA_BATCH_PUT_LIMIT_ENTRY.members["entries"], self.entries
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_BATCH_PUT_LIMIT_ENTRY.members["rateLimitId"]
+                    )
+
+                case 1:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_BATCH_PUT_LIMIT_ENTRY.members["description"]
+                    )
+
+                case 2:
+                    kwargs["dimension_keys"] = _deserialize_dimension_keys(
+                        de, _SCHEMA_BATCH_PUT_LIMIT_ENTRY.members["dimensionKeys"]
+                    )
+
+                case 3:
+                    kwargs["entries"] = _deserialize_limit_entries(
+                        de, _SCHEMA_BATCH_PUT_LIMIT_ENTRY.members["entries"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_BATCH_PUT_LIMIT_ENTRY, consumer=_consumer)
+        if "dimension_keys" not in kwargs:
+            kwargs["dimension_keys"] = []
+        if "entries" not in kwargs:
+            kwargs["entries"] = []
+        return kwargs
+
+
+def _serialize_batch_put_limit_entries(
+    serializer: ShapeSerializer, schema: Schema, value: list[BatchPutLimitEntry]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_batch_put_limit_entries(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[BatchPutLimitEntry]:
+    result: list[BatchPutLimitEntry] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(BatchPutLimitEntry.deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+@dataclass(kw_only=True)
+class BatchPutGatewayRateLimitsInput:
+    """Dataclass for BatchPutGatewayRateLimitsInput structure."""
+
+    gateway_identifier: str | None = None
+    """The unique identifier of the gateway."""
+
+    client_token: str | None = None
+    """
+    A unique, case-sensitive identifier to ensure that the API request
+    completes no more than one time. If you don't specify this field, a
+    value is randomly generated for you. If this token matches a previous
+    request, the service ignores the request, but doesn't return an error.
+    For more information, see [Ensuring
+    idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+    """
+
+    rate_limits: list[BatchPutLimitEntry] | None = None
+    """
+    Complete set of rate limits for this gateway. Replaces all existing
+    limits atomically.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.gateway_identifier is not None:
+            serializer.write_string(
+                _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT.members[
+                    "gatewayIdentifier"
+                ],
+                self.gateway_identifier,
+            )
+
+        if self.client_token is not None:
+            serializer.write_string(
+                _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT.members["clientToken"],
+                self.client_token,
+            )
+
+        if self.rate_limits is not None:
+            _serialize_batch_put_limit_entries(
+                serializer,
+                _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT.members["rateLimits"],
+                self.rate_limits,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["client_token"] = de.read_string(
+                        _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT.members[
+                            "clientToken"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["rate_limits"] = _deserialize_batch_put_limit_entries(
+                        de,
+                        _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT.members[
+                            "rateLimits"
+                        ],
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+class GatewayRateLimitStatus(UnknownEnumMixin, StrEnum):
+    """Status of a gateway limit"""
+
+    CREATING = "CREATING"
+    ACTIVE = "ACTIVE"
+    UPDATING = "UPDATING"
+    DELETING = "DELETING"
+
+
+@dataclass(kw_only=True)
+class GatewayRateLimitDetail:
+    """Shared fields for GatewayRateLimit responses"""
+
+    rate_limit_id: str
+    """
+    Limit identifier. Optional on Create (system-generates if not provided
+    by customer). Always present in responses.
+    """
+
+    gateway_identifier: str
+    """The unique identifier of the gateway."""
+
+    dimension_keys: list[str]
+    """Ordered list of dimension key names defining the scope of a limit"""
+
+    entries: list[LimitEntry]
+    """List of rule entries within a limit"""
+
+    status: GatewayRateLimitStatus
+    """Status of a gateway limit"""
+
+    created_at: datetime
+    """The timestamp when the rate limit was created."""
+
+    updated_at: datetime
+    """The timestamp when the rate limit was last updated."""
+
+    description: str | None = None
+    """Optional human-readable description for this limit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GATEWAY_RATE_LIMIT_DETAIL, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["rateLimitId"], self.rate_limit_id
+        )
+        serializer.write_string(
+            _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["gatewayIdentifier"],
+            self.gateway_identifier,
+        )
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["description"],
+                self.description,
+            )
+
+        _serialize_dimension_keys(
+            serializer,
+            _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["dimensionKeys"],
+            self.dimension_keys,
+        )
+        _serialize_limit_entries(
+            serializer,
+            _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["entries"],
+            self.entries,
+        )
+        serializer.write_string(
+            _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["status"], self.status
+        )
+        serializer.write_timestamp(
+            _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["createdAt"], self.created_at
+        )
+        serializer.write_timestamp(
+            _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["updatedAt"], self.updated_at
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["rateLimitId"]
+                    )
+
+                case 1:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["gatewayIdentifier"]
+                    )
+
+                case 2:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["description"]
+                    )
+
+                case 3:
+                    kwargs["dimension_keys"] = _deserialize_dimension_keys(
+                        de, _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["dimensionKeys"]
+                    )
+
+                case 4:
+                    kwargs["entries"] = _deserialize_limit_entries(
+                        de, _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["entries"]
+                    )
+
+                case 5:
+                    kwargs["status"] = GatewayRateLimitStatus(
+                        de.read_string(
+                            _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["status"]
+                        )
+                    )
+
+                case 6:
+                    kwargs["created_at"] = de.read_timestamp(
+                        _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["createdAt"]
+                    )
+
+                case 7:
+                    kwargs["updated_at"] = de.read_timestamp(
+                        _SCHEMA_GATEWAY_RATE_LIMIT_DETAIL.members["updatedAt"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GATEWAY_RATE_LIMIT_DETAIL, consumer=_consumer)
+        if "rate_limit_id" not in kwargs:
+            kwargs["rate_limit_id"] = ""
+        if "gateway_identifier" not in kwargs:
+            kwargs["gateway_identifier"] = ""
+        if "dimension_keys" not in kwargs:
+            kwargs["dimension_keys"] = []
+        if "entries" not in kwargs:
+            kwargs["entries"] = []
+        if "status" not in kwargs:
+            kwargs["status"] = GatewayRateLimitStatus._corrected("")
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "updated_at" not in kwargs:
+            kwargs["updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+
+def _serialize_gateway_rate_limits(
+    serializer: ShapeSerializer, schema: Schema, value: list[GatewayRateLimitDetail]
+) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+
+def _deserialize_gateway_rate_limits(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> list[GatewayRateLimitDetail]:
+    result: list[GatewayRateLimitDetail] = []
+
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(GatewayRateLimitDetail.deserialize(d))
+
+    deserializer.read_list(schema, _read_value)
+    return result
+
+
+@dataclass(kw_only=True)
+class BatchPutGatewayRateLimitsOutput:
+    """Dataclass for BatchPutGatewayRateLimitsOutput structure."""
+
+    rate_limits: list[GatewayRateLimitDetail]
+    """The resulting set of rate limits after the batch operation."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        _serialize_gateway_rate_limits(
+            serializer,
+            _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_OUTPUT.members["rateLimits"],
+            self.rate_limits,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate_limits"] = _deserialize_gateway_rate_limits(
+                        de,
+                        _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_OUTPUT.members[
+                            "rateLimits"
+                        ],
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_OUTPUT, consumer=_consumer
+        )
+        if "rate_limits" not in kwargs:
+            kwargs["rate_limits"] = []
+        return kwargs
+
+
+BATCH_PUT_GATEWAY_RATE_LIMITS = APIOperation(
+    input=BatchPutGatewayRateLimitsInput,
+    output=BatchPutGatewayRateLimitsOutput,
+    schema=_SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS,
+    input_schema=_SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_INPUT,
+    output_schema=_SCHEMA_BATCH_PUT_GATEWAY_RATE_LIMITS_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ConflictException"
+            ): ConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ServiceQuotaExceededException"
+            ): ServiceQuotaExceededException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_CONFLICT_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_SERVICE_QUOTA_EXCEEDED_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class CreateGatewayRateLimitInput:
+    """Dataclass for CreateGatewayRateLimitInput structure."""
+
+    gateway_identifier: str | None = None
+    """The unique identifier of the gateway to create the rate limit for."""
+
+    client_token: str | None = None
+    """
+    A unique, case-sensitive identifier to ensure that the API request
+    completes no more than one time. If you don't specify this field, a
+    value is randomly generated for you. If this token matches a previous
+    request, the service ignores the request, but doesn't return an error.
+    For more information, see [Ensuring
+    idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+    """
+
+    rate_limit_id: str | None = None
+    """
+    Optional customer-defined limit ID. If not provided, system generates
+    one.
+    """
+
+    description: str | None = None
+    """Optional human-readable description for this limit."""
+
+    dimension_keys: list[str] | None = None
+    """
+    Ordered list of dimension names defining the scope of this limit. Unique
+    per gateway --- no two limits can share the same dimensionKeys.
+    """
+
+    entries: list[LimitEntry] | None = None
+    """Rule entries mapping dimension values to rate configurations."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.gateway_identifier is not None:
+            serializer.write_string(
+                _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["gatewayIdentifier"],
+                self.gateway_identifier,
+            )
+
+        if self.client_token is not None:
+            serializer.write_string(
+                _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["clientToken"],
+                self.client_token,
+            )
+
+        if self.rate_limit_id is not None:
+            serializer.write_string(
+                _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["rateLimitId"],
+                self.rate_limit_id,
+            )
+
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["description"],
+                self.description,
+            )
+
+        if self.dimension_keys is not None:
+            _serialize_dimension_keys(
+                serializer,
+                _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["dimensionKeys"],
+                self.dimension_keys,
+            )
+
+        if self.entries is not None:
+            _serialize_limit_entries(
+                serializer,
+                _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["entries"],
+                self.entries,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["client_token"] = de.read_string(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["clientToken"]
+                    )
+
+                case 2:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["rateLimitId"]
+                    )
+
+                case 3:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["description"]
+                    )
+
+                case 4:
+                    kwargs["dimension_keys"] = _deserialize_dimension_keys(
+                        de,
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members[
+                            "dimensionKeys"
+                        ],
+                    )
+
+                case 5:
+                    kwargs["entries"] = _deserialize_limit_entries(
+                        de, _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT.members["entries"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class CreateGatewayRateLimitOutput:
+    """Shared fields for GatewayRateLimit responses"""
+
+    rate_limit_id: str
+    """
+    Limit identifier. Optional on Create (system-generates if not provided
+    by customer). Always present in responses.
+    """
+
+    gateway_identifier: str
+    """The unique identifier of the gateway."""
+
+    dimension_keys: list[str]
+    """Ordered list of dimension key names defining the scope of a limit"""
+
+    entries: list[LimitEntry]
+    """List of rule entries within a limit"""
+
+    status: GatewayRateLimitStatus
+    """Status of a gateway limit"""
+
+    created_at: datetime
+    """The timestamp when the rate limit was created."""
+
+    updated_at: datetime
+    """The timestamp when the rate limit was last updated."""
+
+    description: str | None = None
+    """Optional human-readable description for this limit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["rateLimitId"],
+            self.rate_limit_id,
+        )
+        serializer.write_string(
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["gatewayIdentifier"],
+            self.gateway_identifier,
+        )
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["description"],
+                self.description,
+            )
+
+        _serialize_dimension_keys(
+            serializer,
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["dimensionKeys"],
+            self.dimension_keys,
+        )
+        _serialize_limit_entries(
+            serializer,
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["entries"],
+            self.entries,
+        )
+        serializer.write_string(
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["status"], self.status
+        )
+        serializer.write_timestamp(
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["createdAt"],
+            self.created_at,
+        )
+        serializer.write_timestamp(
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["updatedAt"],
+            self.updated_at,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["rateLimitId"]
+                    )
+
+                case 1:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["description"]
+                    )
+
+                case 3:
+                    kwargs["dimension_keys"] = _deserialize_dimension_keys(
+                        de,
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members[
+                            "dimensionKeys"
+                        ],
+                    )
+
+                case 4:
+                    kwargs["entries"] = _deserialize_limit_entries(
+                        de, _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["entries"]
+                    )
+
+                case 5:
+                    kwargs["status"] = GatewayRateLimitStatus(
+                        de.read_string(
+                            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["status"]
+                        )
+                    )
+
+                case 6:
+                    kwargs["created_at"] = de.read_timestamp(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["createdAt"]
+                    )
+
+                case 7:
+                    kwargs["updated_at"] = de.read_timestamp(
+                        _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT.members["updatedAt"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT, consumer=_consumer
+        )
+        if "rate_limit_id" not in kwargs:
+            kwargs["rate_limit_id"] = ""
+        if "gateway_identifier" not in kwargs:
+            kwargs["gateway_identifier"] = ""
+        if "dimension_keys" not in kwargs:
+            kwargs["dimension_keys"] = []
+        if "entries" not in kwargs:
+            kwargs["entries"] = []
+        if "status" not in kwargs:
+            kwargs["status"] = GatewayRateLimitStatus._corrected("")
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "updated_at" not in kwargs:
+            kwargs["updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+
+CREATE_GATEWAY_RATE_LIMIT = APIOperation(
+    input=CreateGatewayRateLimitInput,
+    output=CreateGatewayRateLimitOutput,
+    schema=_SCHEMA_CREATE_GATEWAY_RATE_LIMIT,
+    input_schema=_SCHEMA_CREATE_GATEWAY_RATE_LIMIT_INPUT,
+    output_schema=_SCHEMA_CREATE_GATEWAY_RATE_LIMIT_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ConflictException"
+            ): ConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ServiceQuotaExceededException"
+            ): ServiceQuotaExceededException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_CONFLICT_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_SERVICE_QUOTA_EXCEEDED_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class DeleteGatewayRateLimitInput:
+    """Dataclass for DeleteGatewayRateLimitInput structure."""
+
+    gateway_identifier: str | None = None
+    """The unique identifier of the gateway."""
+
+    rate_limit_id: str | None = None
+    """The unique identifier of the rate limit to delete."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_DELETE_GATEWAY_RATE_LIMIT_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.gateway_identifier is not None:
+            serializer.write_string(
+                _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_INPUT.members["gatewayIdentifier"],
+                self.gateway_identifier,
+            )
+
+        if self.rate_limit_id is not None:
+            serializer.write_string(
+                _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_INPUT.members["rateLimitId"],
+                self.rate_limit_id,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_INPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_INPUT.members["rateLimitId"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class DeleteGatewayRateLimitOutput:
+    """Dataclass for DeleteGatewayRateLimitOutput structure."""
+
+    rate_limit_id: str
+    """
+    Limit identifier. Optional on Create (system-generates if not provided
+    by customer). Always present in responses.
+    """
+
+    status: GatewayRateLimitStatus
+    """Status of a gateway limit"""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_DELETE_GATEWAY_RATE_LIMIT_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_OUTPUT.members["rateLimitId"],
+            self.rate_limit_id,
+        )
+        serializer.write_string(
+            _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_OUTPUT.members["status"], self.status
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_OUTPUT.members["rateLimitId"]
+                    )
+
+                case 1:
+                    kwargs["status"] = GatewayRateLimitStatus(
+                        de.read_string(
+                            _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_OUTPUT.members["status"]
+                        )
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_DELETE_GATEWAY_RATE_LIMIT_OUTPUT, consumer=_consumer
+        )
+        if "rate_limit_id" not in kwargs:
+            kwargs["rate_limit_id"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = GatewayRateLimitStatus._corrected("")
+        return kwargs
+
+
+DELETE_GATEWAY_RATE_LIMIT = APIOperation(
+    input=DeleteGatewayRateLimitInput,
+    output=DeleteGatewayRateLimitOutput,
+    schema=_SCHEMA_DELETE_GATEWAY_RATE_LIMIT,
+    input_schema=_SCHEMA_DELETE_GATEWAY_RATE_LIMIT_INPUT,
+    output_schema=_SCHEMA_DELETE_GATEWAY_RATE_LIMIT_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ConflictException"
+            ): ConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_CONFLICT_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class GetGatewayRateLimitInput:
+    """Dataclass for GetGatewayRateLimitInput structure."""
+
+    gateway_identifier: str | None = None
+    """The unique identifier of the gateway."""
+
+    rate_limit_id: str | None = None
+    """The unique identifier of the rate limit to retrieve."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_GATEWAY_RATE_LIMIT_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.gateway_identifier is not None:
+            serializer.write_string(
+                _SCHEMA_GET_GATEWAY_RATE_LIMIT_INPUT.members["gatewayIdentifier"],
+                self.gateway_identifier,
+            )
+
+        if self.rate_limit_id is not None:
+            serializer.write_string(
+                _SCHEMA_GET_GATEWAY_RATE_LIMIT_INPUT.members["rateLimitId"],
+                self.rate_limit_id,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_GET_GATEWAY_RATE_LIMIT_INPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_GET_GATEWAY_RATE_LIMIT_INPUT.members["rateLimitId"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class GetGatewayRateLimitOutput:
+    """Shared fields for GatewayRateLimit responses"""
+
+    rate_limit_id: str
+    """
+    Limit identifier. Optional on Create (system-generates if not provided
+    by customer). Always present in responses.
+    """
+
+    gateway_identifier: str
+    """The unique identifier of the gateway."""
+
+    dimension_keys: list[str]
+    """Ordered list of dimension key names defining the scope of a limit"""
+
+    entries: list[LimitEntry]
+    """List of rule entries within a limit"""
+
+    status: GatewayRateLimitStatus
+    """Status of a gateway limit"""
+
+    created_at: datetime
+    """The timestamp when the rate limit was created."""
+
+    updated_at: datetime
+    """The timestamp when the rate limit was last updated."""
+
+    description: str | None = None
+    """Optional human-readable description for this limit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["rateLimitId"],
+            self.rate_limit_id,
+        )
+        serializer.write_string(
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["gatewayIdentifier"],
+            self.gateway_identifier,
+        )
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["description"],
+                self.description,
+            )
+
+        _serialize_dimension_keys(
+            serializer,
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["dimensionKeys"],
+            self.dimension_keys,
+        )
+        _serialize_limit_entries(
+            serializer,
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["entries"],
+            self.entries,
+        )
+        serializer.write_string(
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["status"], self.status
+        )
+        serializer.write_timestamp(
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["createdAt"], self.created_at
+        )
+        serializer.write_timestamp(
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["updatedAt"], self.updated_at
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["rateLimitId"]
+                    )
+
+                case 1:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["description"]
+                    )
+
+                case 3:
+                    kwargs["dimension_keys"] = _deserialize_dimension_keys(
+                        de,
+                        _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["dimensionKeys"],
+                    )
+
+                case 4:
+                    kwargs["entries"] = _deserialize_limit_entries(
+                        de, _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["entries"]
+                    )
+
+                case 5:
+                    kwargs["status"] = GatewayRateLimitStatus(
+                        de.read_string(
+                            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["status"]
+                        )
+                    )
+
+                case 6:
+                    kwargs["created_at"] = de.read_timestamp(
+                        _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["createdAt"]
+                    )
+
+                case 7:
+                    kwargs["updated_at"] = de.read_timestamp(
+                        _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT.members["updatedAt"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT, consumer=_consumer
+        )
+        if "rate_limit_id" not in kwargs:
+            kwargs["rate_limit_id"] = ""
+        if "gateway_identifier" not in kwargs:
+            kwargs["gateway_identifier"] = ""
+        if "dimension_keys" not in kwargs:
+            kwargs["dimension_keys"] = []
+        if "entries" not in kwargs:
+            kwargs["entries"] = []
+        if "status" not in kwargs:
+            kwargs["status"] = GatewayRateLimitStatus._corrected("")
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "updated_at" not in kwargs:
+            kwargs["updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+
+GET_GATEWAY_RATE_LIMIT = APIOperation(
+    input=GetGatewayRateLimitInput,
+    output=GetGatewayRateLimitOutput,
+    schema=_SCHEMA_GET_GATEWAY_RATE_LIMIT,
+    input_schema=_SCHEMA_GET_GATEWAY_RATE_LIMIT_INPUT,
+    output_schema=_SCHEMA_GET_GATEWAY_RATE_LIMIT_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class ListGatewayRateLimitsInput:
+    """Dataclass for ListGatewayRateLimitsInput structure."""
+
+    gateway_identifier: str | None = None
+    """The unique identifier of the gateway."""
+
+    max_results: int | None = None
+    """
+    The maximum number of results to return in the response. If the total
+    number of results is greater than this value, use the token returned in
+    the response in the `nextToken` field when making another request to
+    return the next batch of results.
+    """
+
+    next_token: str | None = None
+    """
+    The token to use to retrieve the next page of results. Use the value
+    returned in a previous `ListGatewayRateLimits` response.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.gateway_identifier is not None:
+            serializer.write_string(
+                _SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT.members["gatewayIdentifier"],
+                self.gateway_identifier,
+            )
+
+        if self.max_results is not None:
+            serializer.write_integer(
+                _SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT.members["maxResults"],
+                self.max_results,
+            )
+
+        if self.next_token is not None:
+            serializer.write_string(
+                _SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT.members["nextToken"],
+                self.next_token,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["max_results"] = de.read_integer(
+                        _SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT.members["maxResults"]
+                    )
+
+                case 2:
+                    kwargs["next_token"] = de.read_string(
+                        _SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT.members["nextToken"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class ListGatewayRateLimitsOutput:
+    """Dataclass for ListGatewayRateLimitsOutput structure."""
+
+    rate_limits: list[GatewayRateLimitDetail]
+    """The list of rate limits for the gateway."""
+
+    next_token: str | None = None
+    """
+    The token for the next page of results. If this value is absent, there
+    are no more results to retrieve.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_GATEWAY_RATE_LIMITS_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        _serialize_gateway_rate_limits(
+            serializer,
+            _SCHEMA_LIST_GATEWAY_RATE_LIMITS_OUTPUT.members["rateLimits"],
+            self.rate_limits,
+        )
+        if self.next_token is not None:
+            serializer.write_string(
+                _SCHEMA_LIST_GATEWAY_RATE_LIMITS_OUTPUT.members["nextToken"],
+                self.next_token,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate_limits"] = _deserialize_gateway_rate_limits(
+                        de,
+                        _SCHEMA_LIST_GATEWAY_RATE_LIMITS_OUTPUT.members["rateLimits"],
+                    )
+
+                case 1:
+                    kwargs["next_token"] = de.read_string(
+                        _SCHEMA_LIST_GATEWAY_RATE_LIMITS_OUTPUT.members["nextToken"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_LIST_GATEWAY_RATE_LIMITS_OUTPUT, consumer=_consumer
+        )
+        if "rate_limits" not in kwargs:
+            kwargs["rate_limits"] = []
+        return kwargs
+
+
+LIST_GATEWAY_RATE_LIMITS = APIOperation(
+    input=ListGatewayRateLimitsInput,
+    output=ListGatewayRateLimitsOutput,
+    schema=_SCHEMA_LIST_GATEWAY_RATE_LIMITS,
+    input_schema=_SCHEMA_LIST_GATEWAY_RATE_LIMITS_INPUT,
+    output_schema=_SCHEMA_LIST_GATEWAY_RATE_LIMITS_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class UpdateGatewayRateLimitInput:
+    """Dataclass for UpdateGatewayRateLimitInput structure."""
+
+    gateway_identifier: str | None = None
+    """The unique identifier of the gateway."""
+
+    rate_limit_id: str | None = None
+    """The unique identifier of the rate limit to update."""
+
+    description: str | None = None
+    """Optional human-readable description for this limit."""
+
+    entries: list[LimitEntry] | None = None
+    """
+    Updated rule entries. key and dimensionKeys are immutable and cannot be
+    changed.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.gateway_identifier is not None:
+            serializer.write_string(
+                _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT.members["gatewayIdentifier"],
+                self.gateway_identifier,
+            )
+
+        if self.rate_limit_id is not None:
+            serializer.write_string(
+                _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT.members["rateLimitId"],
+                self.rate_limit_id,
+            )
+
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT.members["description"],
+                self.description,
+            )
+
+        if self.entries is not None:
+            _serialize_limit_entries(
+                serializer,
+                _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT.members["entries"],
+                self.entries,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT.members["rateLimitId"]
+                    )
+
+                case 2:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT.members["description"]
+                    )
+
+                case 3:
+                    kwargs["entries"] = _deserialize_limit_entries(
+                        de, _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT.members["entries"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+@dataclass(kw_only=True)
+class UpdateGatewayRateLimitOutput:
+    """Shared fields for GatewayRateLimit responses"""
+
+    rate_limit_id: str
+    """
+    Limit identifier. Optional on Create (system-generates if not provided
+    by customer). Always present in responses.
+    """
+
+    gateway_identifier: str
+    """The unique identifier of the gateway."""
+
+    dimension_keys: list[str]
+    """Ordered list of dimension key names defining the scope of a limit"""
+
+    entries: list[LimitEntry]
+    """List of rule entries within a limit"""
+
+    status: GatewayRateLimitStatus
+    """Status of a gateway limit"""
+
+    created_at: datetime
+    """The timestamp when the rate limit was created."""
+
+    updated_at: datetime
+    """The timestamp when the rate limit was last updated."""
+
+    description: str | None = None
+    """Optional human-readable description for this limit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["rateLimitId"],
+            self.rate_limit_id,
+        )
+        serializer.write_string(
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["gatewayIdentifier"],
+            self.gateway_identifier,
+        )
+        if self.description is not None:
+            serializer.write_string(
+                _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["description"],
+                self.description,
+            )
+
+        _serialize_dimension_keys(
+            serializer,
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["dimensionKeys"],
+            self.dimension_keys,
+        )
+        _serialize_limit_entries(
+            serializer,
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["entries"],
+            self.entries,
+        )
+        serializer.write_string(
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["status"], self.status
+        )
+        serializer.write_timestamp(
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["createdAt"],
+            self.created_at,
+        )
+        serializer.write_timestamp(
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["updatedAt"],
+            self.updated_at,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["rate_limit_id"] = de.read_string(
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["rateLimitId"]
+                    )
+
+                case 1:
+                    kwargs["gateway_identifier"] = de.read_string(
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members[
+                            "gatewayIdentifier"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["description"] = de.read_string(
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["description"]
+                    )
+
+                case 3:
+                    kwargs["dimension_keys"] = _deserialize_dimension_keys(
+                        de,
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members[
+                            "dimensionKeys"
+                        ],
+                    )
+
+                case 4:
+                    kwargs["entries"] = _deserialize_limit_entries(
+                        de, _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["entries"]
+                    )
+
+                case 5:
+                    kwargs["status"] = GatewayRateLimitStatus(
+                        de.read_string(
+                            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["status"]
+                        )
+                    )
+
+                case 6:
+                    kwargs["created_at"] = de.read_timestamp(
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["createdAt"]
+                    )
+
+                case 7:
+                    kwargs["updated_at"] = de.read_timestamp(
+                        _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT.members["updatedAt"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT, consumer=_consumer
+        )
+        if "rate_limit_id" not in kwargs:
+            kwargs["rate_limit_id"] = ""
+        if "gateway_identifier" not in kwargs:
+            kwargs["gateway_identifier"] = ""
+        if "dimension_keys" not in kwargs:
+            kwargs["dimension_keys"] = []
+        if "entries" not in kwargs:
+            kwargs["entries"] = []
+        if "status" not in kwargs:
+            kwargs["status"] = GatewayRateLimitStatus._corrected("")
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "updated_at" not in kwargs:
+            kwargs["updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+
+UPDATE_GATEWAY_RATE_LIMIT = APIOperation(
+    input=UpdateGatewayRateLimitInput,
+    output=UpdateGatewayRateLimitOutput,
+    schema=_SCHEMA_UPDATE_GATEWAY_RATE_LIMIT,
+    input_schema=_SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_INPUT,
+    output_schema=_SCHEMA_UPDATE_GATEWAY_RATE_LIMIT_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ConflictException"
+            ): ConflictException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcorecontrol#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_CONFLICT_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
 class AuthorizerType(UnknownEnumMixin, StrEnum):
     CUSTOM_JWT = "CUSTOM_JWT"
     AWS_IAM = "AWS_IAM"
@@ -28219,6 +33814,138 @@ class RuntimeTargetConfiguration:
         return kwargs
 
 
+def _serialize_http_connector_parameters(
+    serializer: ShapeSerializer, schema: Schema, value: dict[str, str]
+) -> None:
+    with serializer.begin_map(schema, len(value)) as m:
+        value_schema = schema.members["value"]
+        for k, v in value.items():
+            m.entry(k, lambda vs: vs.write_string(value_schema, v))
+
+
+def _deserialize_http_connector_parameters(
+    deserializer: ShapeDeserializer, schema: Schema
+) -> dict[str, str]:
+    result: dict[str, str] = {}
+    value_schema = schema.members["value"]
+
+    def _read_value(k: str, d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result[k] = d.read_string(value_schema)
+
+    deserializer.read_map(schema, _read_value)
+    return result
+
+
+@dataclass(kw_only=True)
+class HttpConnectorSource:
+    """The source identifying the HTTP connector integration."""
+
+    connector_id: str
+    """The identifier for the HTTP connector integration."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_HTTP_CONNECTOR_SOURCE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_HTTP_CONNECTOR_SOURCE.members["connectorId"], self.connector_id
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["connector_id"] = de.read_string(
+                        _SCHEMA_HTTP_CONNECTOR_SOURCE.members["connectorId"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_HTTP_CONNECTOR_SOURCE, consumer=_consumer)
+        if "connector_id" not in kwargs:
+            kwargs["connector_id"] = ""
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(connector_id="")
+
+
+@dataclass(kw_only=True)
+class HttpConnectorTargetConfiguration:
+    """
+    The configuration for an HTTP connector target. Use this configuration
+    when you want to route HTTP requests through a managed connector.
+    """
+
+    source: HttpConnectorSource
+    """The source configuration identifying which HTTP connector to use."""
+
+    parameters: dict[str, str] | None = None
+    """
+    The resource parameters for this connector (for example, `memoryId`).
+    The service validates these parameters against the request path at
+    runtime.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_HTTP_CONNECTOR_TARGET_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_HTTP_CONNECTOR_TARGET_CONFIGURATION.members["source"], self.source
+        )
+        if self.parameters is not None:
+            _serialize_http_connector_parameters(
+                serializer,
+                _SCHEMA_HTTP_CONNECTOR_TARGET_CONFIGURATION.members["parameters"],
+                self.parameters,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["source"] = HttpConnectorSource.deserialize(de)
+
+                case 1:
+                    kwargs["parameters"] = _deserialize_http_connector_parameters(
+                        de,
+                        _SCHEMA_HTTP_CONNECTOR_TARGET_CONFIGURATION.members[
+                            "parameters"
+                        ],
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_HTTP_CONNECTOR_TARGET_CONFIGURATION, consumer=_consumer
+        )
+        if "source" not in kwargs:
+            kwargs["source"] = HttpConnectorSource._smithy_default()
+        return kwargs
+
+
 class PassthroughProtocolType(UnknownEnumMixin, StrEnum):
     MCP = "MCP"
     A2_A = "A2A"
@@ -28443,6 +34170,29 @@ class HttpTargetConfigurationPassthrough:
 
 
 @dataclass
+class HttpTargetConfigurationConnector:
+    """
+    The connector-based configuration for the HTTP target. Use this
+    configuration when you want to route HTTP requests through a managed
+    connector.
+    """
+
+    value: HttpConnectorTargetConfiguration
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_HTTP_TARGET_CONFIGURATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_HTTP_TARGET_CONFIGURATION.members["connector"], self.value
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=HttpConnectorTargetConfiguration.deserialize(deserializer))
+
+
+@dataclass
 class HttpTargetConfigurationUnknown:
     """
     Represents an unknown variant.
@@ -28469,6 +34219,7 @@ class HttpTargetConfigurationUnknown:
 HttpTargetConfiguration = Union[
     HttpTargetConfigurationAgentcoreRuntime
     | HttpTargetConfigurationPassthrough
+    | HttpTargetConfigurationConnector
     | HttpTargetConfigurationUnknown
 ]
 """
@@ -28500,6 +34251,9 @@ class _HttpTargetConfigurationDeserializer:
 
             case 1:
                 self._set_result(HttpTargetConfigurationPassthrough.deserialize(de))
+
+            case 2:
+                self._set_result(HttpTargetConfigurationConnector.deserialize(de))
 
             case _:
                 self._set_result(
@@ -30684,6 +36438,7 @@ class TargetType(UnknownEnumMixin, StrEnum):
     AGENTCORE_RUNTIME = "AGENTCORE_RUNTIME"
     PASSTHROUGH = "PASSTHROUGH"
     PROVIDER = "PROVIDER"
+    HTTP_CONNECTOR = "HTTP_CONNECTOR"
 
 
 @dataclass(kw_only=True)
@@ -60345,54 +66100,6 @@ LIST_POLICY_ENGINE_SUMMARIES = APIOperation(
         _SCHEMA_VALIDATION_EXCEPTION,
     ],
 )
-
-
-@dataclass(kw_only=True)
-class UpdatedDescription:
-    """
-    Wrapper for updating an optional Description field with PATCH semantics.
-    When present in an update request, the description is replaced with
-    optionalValue. When absent, the description is left unchanged. To unset
-    the description, include the wrapper with optionalValue not specified.
-    """
-
-    optional_value: str | None = field(repr=False, default=None)
-    """
-    Represents an optional value that is used to update the human-readable
-    description of the resource. If not specified, it will clear the current
-    description of the resource.
-    """
-
-    def serialize(self, serializer: ShapeSerializer):
-        serializer.write_struct(_SCHEMA_UPDATED_DESCRIPTION, self)
-
-    def serialize_members(self, serializer: ShapeSerializer):
-        if self.optional_value is not None:
-            serializer.write_string(
-                _SCHEMA_UPDATED_DESCRIPTION.members["optionalValue"],
-                self.optional_value,
-            )
-
-    @classmethod
-    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
-        return cls(**cls.deserialize_kwargs(deserializer))
-
-    @classmethod
-    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
-        kwargs: dict[str, Any] = {}
-
-        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
-            match schema.expect_member_index():
-                case 0:
-                    kwargs["optional_value"] = de.read_string(
-                        _SCHEMA_UPDATED_DESCRIPTION.members["optionalValue"]
-                    )
-
-                case _:
-                    logger.debug("Unexpected member schema: %s", schema)
-
-        deserializer.read_struct(_SCHEMA_UPDATED_DESCRIPTION, consumer=_consumer)
-        return kwargs
 
 
 @dataclass(kw_only=True)

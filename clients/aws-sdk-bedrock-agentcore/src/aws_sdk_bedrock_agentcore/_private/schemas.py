@@ -1972,6 +1972,30 @@ CLOUD_WATCH_LOGS_TRACE_CONFIG = Schema.collection(
     },
 )
 
+ONLINE_EVALUATION_TRACE_CONFIG = Schema.collection(
+    id=ShapeID("com.amazonaws.bedrockagentcore#OnlineEvaluationTraceConfig"),
+    members={
+        "onlineEvaluationConfigArn": {
+            "target": ONLINE_EVALUATION_CONFIG_ARN,
+            "traits": [Trait.new(id=ShapeID("smithy.api#required"))],
+        },
+        "startTime": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+            ],
+        },
+        "endTime": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+            ],
+        },
+    },
+)
+
 SPAN = Schema(
     id=ShapeID("com.amazonaws.bedrockagentcore#Span"), shape_type=ShapeType.DOCUMENT
 )
@@ -1996,6 +2020,7 @@ AGENT_TRACES_CONFIG = Schema.collection(
         "sessionSpans": {"target": SPANS},
         "cloudwatchLogs": {"target": CLOUD_WATCH_LOGS_TRACE_CONFIG},
         "batchEvaluation": {"target": BATCH_EVALUATION_TRACE_CONFIG},
+        "onlineEvaluation": {"target": ONLINE_EVALUATION_TRACE_CONFIG},
     },
 )
 
@@ -3534,6 +3559,141 @@ UPDATE_BROWSER_STREAM = Schema(
                     "method": "PUT",
                     "uri": "/browsers/{browserIdentifier}/sessions/streams/update",
                     "code": 200,
+                }
+            ),
+        ),
+    ],
+)
+
+CAPACITY_PROVIDER_ID = Schema(
+    id=ShapeID("com.amazonaws.bedrockagentcore#CapacityProviderId"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(
+            id=ShapeID("smithy.api#length"),
+            value=MappingProxyType({"min": 12, "max": 59}),
+        ),
+        Trait.new(
+            id=ShapeID("smithy.api#pattern"),
+            value="^[a-zA-Z][a-zA-Z0-9_]{0,47}-[a-zA-Z0-9]{10}$",
+        ),
+    ],
+)
+
+DELETE_CAPACITY_PROVIDER_SESSION_INPUT = Schema.collection(
+    id=ShapeID("com.amazonaws.bedrockagentcore#DeleteCapacityProviderSessionInput"),
+    traits=[
+        Trait.new(
+            id=ShapeID("smithy.synthetic#originalShapeId"),
+            value="com.amazonaws.bedrockagentcore#DeleteCapacityProviderSessionRequest",
+        ),
+        Trait.new(id=ShapeID("smithy.api#input")),
+    ],
+    members={
+        "capacityProviderId": {
+            "target": CAPACITY_PROVIDER_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+            ],
+        },
+        "sessionId": {
+            "target": SESSION_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+            ],
+        },
+    },
+)
+
+CAPACITY_PROVIDER_ARN = Schema(
+    id=ShapeID("com.amazonaws.bedrockagentcore#CapacityProviderArn"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(
+            id=ShapeID("smithy.api#pattern"),
+            value="^arn:aws(-[^:]+)?:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:capacity-provider/[a-zA-Z][a-zA-Z0-9_]{0,47}-[a-zA-Z0-9]{10}$",
+        ),
+        Trait.new(
+            id=ShapeID("aws.api#arnReference"),
+            value=MappingProxyType({"type": "AWS::BedrockAgentCore::CapacityProvider"}),
+        ),
+    ],
+)
+
+CAPACITY_PROVIDER_SESSION_STATUS = Schema.collection(
+    id=ShapeID("com.amazonaws.bedrockagentcore#CapacityProviderSessionStatus"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "PROVISIONING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="Provisioning")
+            ],
+        },
+        "DEPROVISIONING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="Deprovisioning")
+            ],
+        },
+        "ACTIVE": {
+            "target": UNIT,
+            "traits": [Trait.new(id=ShapeID("smithy.api#enumValue"), value="Active")],
+        },
+        "DELETING": {
+            "target": UNIT,
+            "traits": [Trait.new(id=ShapeID("smithy.api#enumValue"), value="Deleting")],
+        },
+        "DELETED": {
+            "target": UNIT,
+            "traits": [Trait.new(id=ShapeID("smithy.api#enumValue"), value="Deleted")],
+        },
+        "STOPPED": {
+            "target": UNIT,
+            "traits": [Trait.new(id=ShapeID("smithy.api#enumValue"), value="Stopped")],
+        },
+    },
+)
+
+DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT = Schema.collection(
+    id=ShapeID("com.amazonaws.bedrockagentcore#DeleteCapacityProviderSessionOutput"),
+    traits=[
+        Trait.new(
+            id=ShapeID("smithy.synthetic#originalShapeId"),
+            value="com.amazonaws.bedrockagentcore#DeleteCapacityProviderSessionResponse",
+        ),
+        Trait.new(id=ShapeID("smithy.api#output")),
+    ],
+    members={
+        "capacityProviderArn": {
+            "target": CAPACITY_PROVIDER_ARN,
+            "traits": [Trait.new(id=ShapeID("smithy.api#required"))],
+        },
+        "sessionId": {
+            "target": SESSION_ID,
+            "traits": [Trait.new(id=ShapeID("smithy.api#required"))],
+        },
+        "status": {
+            "target": CAPACITY_PROVIDER_SESSION_STATUS,
+            "traits": [Trait.new(id=ShapeID("smithy.api#required"))],
+        },
+    },
+)
+
+DELETE_CAPACITY_PROVIDER_SESSION = Schema(
+    id=ShapeID("com.amazonaws.bedrockagentcore#DeleteCapacityProviderSession"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#idempotent")),
+        Trait.new(
+            id=ShapeID("smithy.api#http"),
+            value=MappingProxyType(
+                {
+                    "method": "DELETE",
+                    "uri": "/capacity-providers/{capacityProviderId}/sessions/{sessionId}",
+                    "code": 202,
                 }
             ),
         ),
