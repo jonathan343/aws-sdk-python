@@ -15,17 +15,22 @@ from .models import (
     ADD_DATASET_EXAMPLES,
     AddDatasetExamplesInput,
     AddDatasetExamplesOutput,
+    BATCH_PUT_GATEWAY_RATE_LIMITS,
+    BatchPutGatewayRateLimitsInput,
+    BatchPutGatewayRateLimitsOutput,
     CREATE_AGENT_RUNTIME,
     CREATE_AGENT_RUNTIME_ENDPOINT,
     CREATE_API_KEY_CREDENTIAL_PROVIDER,
     CREATE_BROWSER,
     CREATE_BROWSER_PROFILE,
+    CREATE_CAPACITY_PROVIDER,
     CREATE_CODE_INTERPRETER,
     CREATE_CONFIGURATION_BUNDLE,
     CREATE_DATASET,
     CREATE_DATASET_VERSION,
     CREATE_EVALUATOR,
     CREATE_GATEWAY,
+    CREATE_GATEWAY_RATE_LIMIT,
     CREATE_GATEWAY_RULE,
     CREATE_GATEWAY_TARGET,
     CREATE_HARNESS,
@@ -51,6 +56,8 @@ from .models import (
     CreateBrowserOutput,
     CreateBrowserProfileInput,
     CreateBrowserProfileOutput,
+    CreateCapacityProviderInput,
+    CreateCapacityProviderOutput,
     CreateCodeInterpreterInput,
     CreateCodeInterpreterOutput,
     CreateConfigurationBundleInput,
@@ -63,6 +70,8 @@ from .models import (
     CreateEvaluatorOutput,
     CreateGatewayInput,
     CreateGatewayOutput,
+    CreateGatewayRateLimitInput,
+    CreateGatewayRateLimitOutput,
     CreateGatewayRuleInput,
     CreateGatewayRuleOutput,
     CreateGatewayTargetInput,
@@ -98,12 +107,14 @@ from .models import (
     DELETE_API_KEY_CREDENTIAL_PROVIDER,
     DELETE_BROWSER,
     DELETE_BROWSER_PROFILE,
+    DELETE_CAPACITY_PROVIDER,
     DELETE_CODE_INTERPRETER,
     DELETE_CONFIGURATION_BUNDLE,
     DELETE_DATASET,
     DELETE_DATASET_EXAMPLES,
     DELETE_EVALUATOR,
     DELETE_GATEWAY,
+    DELETE_GATEWAY_RATE_LIMIT,
     DELETE_GATEWAY_RULE,
     DELETE_GATEWAY_TARGET,
     DELETE_HARNESS,
@@ -130,6 +141,8 @@ from .models import (
     DeleteBrowserOutput,
     DeleteBrowserProfileInput,
     DeleteBrowserProfileOutput,
+    DeleteCapacityProviderInput,
+    DeleteCapacityProviderOutput,
     DeleteCodeInterpreterInput,
     DeleteCodeInterpreterOutput,
     DeleteConfigurationBundleInput,
@@ -142,6 +155,8 @@ from .models import (
     DeleteEvaluatorOutput,
     DeleteGatewayInput,
     DeleteGatewayOutput,
+    DeleteGatewayRateLimitInput,
+    DeleteGatewayRateLimitOutput,
     DeleteGatewayRuleInput,
     DeleteGatewayRuleOutput,
     DeleteGatewayTargetInput,
@@ -179,12 +194,14 @@ from .models import (
     GET_API_KEY_CREDENTIAL_PROVIDER,
     GET_BROWSER,
     GET_BROWSER_PROFILE,
+    GET_CAPACITY_PROVIDER,
     GET_CODE_INTERPRETER,
     GET_CONFIGURATION_BUNDLE,
     GET_CONFIGURATION_BUNDLE_VERSION,
     GET_DATASET,
     GET_EVALUATOR,
     GET_GATEWAY,
+    GET_GATEWAY_RATE_LIMIT,
     GET_GATEWAY_RULE,
     GET_GATEWAY_TARGET,
     GET_HARNESS,
@@ -216,6 +233,8 @@ from .models import (
     GetBrowserOutput,
     GetBrowserProfileInput,
     GetBrowserProfileOutput,
+    GetCapacityProviderInput,
+    GetCapacityProviderOutput,
     GetCodeInterpreterInput,
     GetCodeInterpreterOutput,
     GetConfigurationBundleInput,
@@ -228,6 +247,8 @@ from .models import (
     GetEvaluatorOutput,
     GetGatewayInput,
     GetGatewayOutput,
+    GetGatewayRateLimitInput,
+    GetGatewayRateLimitOutput,
     GetGatewayRuleInput,
     GetGatewayRuleOutput,
     GetGatewayTargetInput,
@@ -273,9 +294,11 @@ from .models import (
     LIST_AGENT_RUNTIMES,
     LIST_AGENT_RUNTIME_ENDPOINTS,
     LIST_AGENT_RUNTIME_VERSIONS,
+    LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER,
     LIST_API_KEY_CREDENTIAL_PROVIDERS,
     LIST_BROWSERS,
     LIST_BROWSER_PROFILES,
+    LIST_CAPACITY_PROVIDERS,
     LIST_CODE_INTERPRETERS,
     LIST_CONFIGURATION_BUNDLES,
     LIST_CONFIGURATION_BUNDLE_VERSIONS,
@@ -284,6 +307,7 @@ from .models import (
     LIST_DATASET_VERSIONS,
     LIST_EVALUATORS,
     LIST_GATEWAYS,
+    LIST_GATEWAY_RATE_LIMITS,
     LIST_GATEWAY_RULES,
     LIST_GATEWAY_TARGETS,
     LIST_HARNESSES,
@@ -308,6 +332,8 @@ from .models import (
     LIST_WORKLOAD_IDENTITIES,
     ListAgentRuntimeEndpointsInput,
     ListAgentRuntimeEndpointsOutput,
+    ListAgentRuntimeVersionsByCapacityProviderInput,
+    ListAgentRuntimeVersionsByCapacityProviderOutput,
     ListAgentRuntimeVersionsInput,
     ListAgentRuntimeVersionsOutput,
     ListAgentRuntimesInput,
@@ -318,6 +344,8 @@ from .models import (
     ListBrowserProfilesOutput,
     ListBrowsersInput,
     ListBrowsersOutput,
+    ListCapacityProvidersInput,
+    ListCapacityProvidersOutput,
     ListCodeInterpretersInput,
     ListCodeInterpretersOutput,
     ListConfigurationBundleVersionsInput,
@@ -332,6 +360,8 @@ from .models import (
     ListDatasetsOutput,
     ListEvaluatorsInput,
     ListEvaluatorsOutput,
+    ListGatewayRateLimitsInput,
+    ListGatewayRateLimitsOutput,
     ListGatewayRulesInput,
     ListGatewayRulesOutput,
     ListGatewayTargetsInput,
@@ -400,11 +430,13 @@ from .models import (
     UPDATE_AGENT_RUNTIME,
     UPDATE_AGENT_RUNTIME_ENDPOINT,
     UPDATE_API_KEY_CREDENTIAL_PROVIDER,
+    UPDATE_CAPACITY_PROVIDER,
     UPDATE_CONFIGURATION_BUNDLE,
     UPDATE_DATASET,
     UPDATE_DATASET_EXAMPLES,
     UPDATE_EVALUATOR,
     UPDATE_GATEWAY,
+    UPDATE_GATEWAY_RATE_LIMIT,
     UPDATE_GATEWAY_RULE,
     UPDATE_GATEWAY_TARGET,
     UPDATE_HARNESS,
@@ -429,6 +461,8 @@ from .models import (
     UpdateAgentRuntimeOutput,
     UpdateApiKeyCredentialProviderInput,
     UpdateApiKeyCredentialProviderOutput,
+    UpdateCapacityProviderInput,
+    UpdateCapacityProviderOutput,
     UpdateConfigurationBundleInput,
     UpdateConfigurationBundleOutput,
     UpdateDatasetExamplesInput,
@@ -439,6 +473,8 @@ from .models import (
     UpdateEvaluatorOutput,
     UpdateGatewayInput,
     UpdateGatewayOutput,
+    UpdateGatewayRateLimitInput,
+    UpdateGatewayRateLimitOutput,
     UpdateGatewayRuleInput,
     UpdateGatewayRuleOutput,
     UpdateGatewayTargetInput,
@@ -550,6 +586,56 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=ADD_DATASET_EXAMPLES,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def batch_put_gateway_rate_limits(
+        self, input: BatchPutGatewayRateLimitsInput, plugins: list[Plugin] | None = None
+    ) -> BatchPutGatewayRateLimitsOutput:
+        """
+        Atomically creates or updates multiple rate limits for a gateway. The
+        operation updates existing limits with matching keys and creates new
+        limits for new keys. If the operation fails, the service applies no
+        changes. Retry the request after resolving the issue.
+
+        Args:
+            input:
+                An instance of `BatchPutGatewayRateLimitsInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `BatchPutGatewayRateLimitsOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=BATCH_PUT_GATEWAY_RATE_LIMITS,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,
@@ -792,6 +878,60 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=CREATE_BROWSER_PROFILE,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def create_capacity_provider(
+        self, input: CreateCapacityProviderInput, plugins: list[Plugin] | None = None
+    ) -> CreateCapacityProviderOutput:
+        """
+        Creates a capacity provider. A capacity provider defines the Amazon EC2
+        infrastructure for AgentCore Runtime, including the operating system,
+        allowed instance types, networking, and storage. It also specifies the
+        IAM permissions that AgentCore uses to manage those instances.
+
+        The capacity provider name must be unique within your account. After you
+        create the capacity provider, it enters a `CREATING` state and
+        transitions to `READY` when it is available for use.
+
+        Args:
+            input:
+                An instance of `CreateCapacityProviderInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `CreateCapacityProviderOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=CREATE_CAPACITY_PROVIDER,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,
@@ -1089,6 +1229,55 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=CREATE_GATEWAY,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def create_gateway_rate_limit(
+        self, input: CreateGatewayRateLimitInput, plugins: list[Plugin] | None = None
+    ) -> CreateGatewayRateLimitOutput:
+        """
+        Creates a rate limit for a gateway. Rate limits define throttling rules
+        for each dimension that control request rates, token consumption rates,
+        and concurrent connections through the gateway.
+
+        Args:
+            input:
+                An instance of `CreateGatewayRateLimitInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `CreateGatewayRateLimitOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=CREATE_GATEWAY_RATE_LIMIT,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,
@@ -1860,7 +2049,8 @@ class AsyncBedrockAgentCoreControlClient:
         self, input: DeleteAgentRuntimeInput, plugins: list[Plugin] | None = None
     ) -> DeleteAgentRuntimeOutput:
         """
-        Deletes an Amazon Bedrock AgentCore Runtime.
+        Deletes an Amazon Bedrock AgentCore Runtime, or a single version of an
+        AgentCore Runtime when you provide the version qualifier.
 
         Args:
             input:
@@ -1909,7 +2099,7 @@ class AsyncBedrockAgentCoreControlClient:
         plugins: list[Plugin] | None = None,
     ) -> DeleteAgentRuntimeEndpointOutput:
         """
-        Deletes an AAgentCore Runtime endpoint.
+        Deletes an AgentCore Runtime endpoint.
 
         Args:
             input:
@@ -2085,6 +2275,55 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=DELETE_BROWSER_PROFILE,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def delete_capacity_provider(
+        self, input: DeleteCapacityProviderInput, plugins: list[Plugin] | None = None
+    ) -> DeleteCapacityProviderOutput:
+        """
+        Deletes a capacity provider. Before you delete a capacity provider,
+        disassociate all agent runtimes and runtime versions that reference it.
+        If any references remain, the operation fails.
+
+        Args:
+            input:
+                An instance of `DeleteCapacityProviderInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `DeleteCapacityProviderOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=DELETE_CAPACITY_PROVIDER,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,
@@ -2373,6 +2612,53 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=DELETE_GATEWAY,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def delete_gateway_rate_limit(
+        self, input: DeleteGatewayRateLimitInput, plugins: list[Plugin] | None = None
+    ) -> DeleteGatewayRateLimitOutput:
+        """
+        Deletes a gateway rate limit.
+
+        Args:
+            input:
+                An instance of `DeleteGatewayRateLimitInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `DeleteGatewayRateLimitOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=DELETE_GATEWAY_RATE_LIMIT,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,
@@ -3403,6 +3689,54 @@ class AsyncBedrockAgentCoreControlClient:
 
         return await pipeline(call)
 
+    async def get_capacity_provider(
+        self, input: GetCapacityProviderInput, plugins: list[Plugin] | None = None
+    ) -> GetCapacityProviderOutput:
+        """
+        Retrieves information about a capacity provider, including its status,
+        permissions configuration, and compute configuration.
+
+        Args:
+            input:
+                An instance of `GetCapacityProviderInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `GetCapacityProviderOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=GET_CAPACITY_PROVIDER,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
     async def get_code_interpreter(
         self, input: GetCodeInterpreterInput, plugins: list[Plugin] | None = None
     ) -> GetCodeInterpreterOutput:
@@ -3685,6 +4019,53 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=GET_GATEWAY,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def get_gateway_rate_limit(
+        self, input: GetGatewayRateLimitInput, plugins: list[Plugin] | None = None
+    ) -> GetGatewayRateLimitOutput:
+        """
+        Retrieves information about a gateway rate limit.
+
+        Args:
+            input:
+                An instance of `GetGatewayRateLimitInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `GetGatewayRateLimitOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=GET_GATEWAY_RATE_LIMIT,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,
@@ -4861,6 +5242,58 @@ class AsyncBedrockAgentCoreControlClient:
 
         return await pipeline(call)
 
+    async def list_agent_runtime_versions_by_capacity_provider(
+        self,
+        input: ListAgentRuntimeVersionsByCapacityProviderInput,
+        plugins: list[Plugin] | None = None,
+    ) -> ListAgentRuntimeVersionsByCapacityProviderOutput:
+        """
+        Lists the agent runtime versions that are associated with a capacity
+        provider. Use this operation to identify the runtimes you must
+        disassociate before you can delete the capacity provider. Results are
+        paginated; use the `nextToken` parameter to retrieve additional results.
+
+        Args:
+            input:
+                An instance of `ListAgentRuntimeVersionsByCapacityProviderInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `ListAgentRuntimeVersionsByCapacityProviderOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=LIST_AGENT_RUNTIME_VERSIONS_BY_CAPACITY_PROVIDER,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
     async def list_api_key_credential_providers(
         self,
         input: ListApiKeyCredentialProvidersInput,
@@ -4994,6 +5427,56 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=LIST_BROWSERS,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def list_capacity_providers(
+        self, input: ListCapacityProvidersInput, plugins: list[Plugin] | None = None
+    ) -> ListCapacityProvidersOutput:
+        """
+        Lists the capacity providers in your account and returns summary
+        information for each one. To retrieve the full configuration for a
+        specific capacity provider, use `GetCapacityProvider`. Results are
+        paginated; use the `nextToken` parameter to retrieve additional results.
+
+        Args:
+            input:
+                An instance of `ListCapacityProvidersInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `ListCapacityProvidersOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=LIST_CAPACITY_PROVIDERS,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,
@@ -5331,6 +5814,54 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=LIST_EVALUATORS,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def list_gateway_rate_limits(
+        self, input: ListGatewayRateLimitsInput, plugins: list[Plugin] | None = None
+    ) -> ListGatewayRateLimitsOutput:
+        """
+        Lists all rate limits for a gateway. Results are paginated. Use the
+        `nextToken` parameter to retrieve additional results.
+
+        Args:
+            input:
+                An instance of `ListGatewayRateLimitsInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `ListGatewayRateLimitsOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=LIST_GATEWAY_RATE_LIMITS,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,
@@ -6989,6 +7520,55 @@ class AsyncBedrockAgentCoreControlClient:
 
         return await pipeline(call)
 
+    async def update_capacity_provider(
+        self, input: UpdateCapacityProviderInput, plugins: list[Plugin] | None = None
+    ) -> UpdateCapacityProviderOutput:
+        """
+        Updates a capacity provider. Only the description can be changed. To
+        change other configuration, such as instance types, networking, or
+        storage, create a new capacity provider.
+
+        Args:
+            input:
+                An instance of `UpdateCapacityProviderInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `UpdateCapacityProviderOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=UPDATE_CAPACITY_PROVIDER,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
     async def update_configuration_bundle(
         self, input: UpdateConfigurationBundleInput, plugins: list[Plugin] | None = None
     ) -> UpdateConfigurationBundleOutput:
@@ -7224,6 +7804,54 @@ class AsyncBedrockAgentCoreControlClient:
         call = ClientCall(
             input=input,
             operation=UPDATE_GATEWAY,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def update_gateway_rate_limit(
+        self, input: UpdateGatewayRateLimitInput, plugins: list[Plugin] | None = None
+    ) -> UpdateGatewayRateLimitOutput:
+        """
+        Updates the entries of a gateway rate limit. The dimension keys are
+        immutable after creation.
+
+        Args:
+            input:
+                An instance of `UpdateGatewayRateLimitInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `UpdateGatewayRateLimitOutput`.
+        """
+        operation_plugins: list[Plugin] = []
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError(
+                "protocol and transport MUST be set on the config to make calls."
+            )
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(protocol=config.protocol, transport=config.transport)
+        call = ClientCall(
+            input=input,
+            operation=UPDATE_GATEWAY_RATE_LIMIT,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,

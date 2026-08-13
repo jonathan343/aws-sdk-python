@@ -102,6 +102,9 @@ from ._private.schemas import (
     DELETE_BATCH_EVALUATION as _SCHEMA_DELETE_BATCH_EVALUATION,
     DELETE_BATCH_EVALUATION_INPUT as _SCHEMA_DELETE_BATCH_EVALUATION_INPUT,
     DELETE_BATCH_EVALUATION_OUTPUT as _SCHEMA_DELETE_BATCH_EVALUATION_OUTPUT,
+    DELETE_CAPACITY_PROVIDER_SESSION as _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION,
+    DELETE_CAPACITY_PROVIDER_SESSION_INPUT as _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_INPUT,
+    DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT as _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT,
     DELETE_EVENT as _SCHEMA_DELETE_EVENT,
     DELETE_EVENT_INPUT as _SCHEMA_DELETE_EVENT_INPUT,
     DELETE_EVENT_OUTPUT as _SCHEMA_DELETE_EVENT_OUTPUT,
@@ -345,6 +348,7 @@ from ._private.schemas import (
     MOUSE_SCROLL_ARGUMENTS as _SCHEMA_MOUSE_SCROLL_ARGUMENTS,
     MOUSE_SCROLL_RESULT as _SCHEMA_MOUSE_SCROLL_RESULT,
     ONLINE_EVALUATION_CONFIG_SOURCE as _SCHEMA_ONLINE_EVALUATION_CONFIG_SOURCE,
+    ONLINE_EVALUATION_TRACE_CONFIG as _SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG,
     OUTPUT_CONFIG as _SCHEMA_OUTPUT_CONFIG,
     O_AUTH2_AUTHENTICATION as _SCHEMA_O_AUTH2_AUTHENTICATION,
     O_AUTH_CREDENTIAL_PROVIDER as _SCHEMA_O_AUTH_CREDENTIAL_PROVIDER,
@@ -4970,6 +4974,87 @@ class CloudWatchLogsTraceConfig:
         return kwargs
 
 
+@dataclass(kw_only=True)
+class OnlineEvaluationTraceConfig:
+    """
+    Contains the configuration for reusing agent traces from an online
+    evaluation configuration for recommendation analysis. Because online
+    evaluation is a continuous stream, a time range specifies which
+    evaluated sessions the recommendation includes.
+    """
+
+    online_evaluation_config_arn: str
+    """The ARN of the online evaluation configuration to reuse sessions from."""
+
+    start_time: datetime
+    """
+    The start time of the time range. Only sessions evaluated at or after
+    this timestamp are included.
+    """
+
+    end_time: datetime
+    """
+    The end time of the time range. Only sessions evaluated before this
+    timestamp are included.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG.members["onlineEvaluationConfigArn"],
+            self.online_evaluation_config_arn,
+        )
+        serializer.write_timestamp(
+            _SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG.members["startTime"], self.start_time
+        )
+        serializer.write_timestamp(
+            _SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG.members["endTime"], self.end_time
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["online_evaluation_config_arn"] = de.read_string(
+                        _SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG.members[
+                            "onlineEvaluationConfigArn"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["start_time"] = de.read_timestamp(
+                        _SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG.members["startTime"]
+                    )
+
+                case 2:
+                    kwargs["end_time"] = de.read_timestamp(
+                        _SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG.members["endTime"]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_ONLINE_EVALUATION_TRACE_CONFIG, consumer=_consumer
+        )
+        if "online_evaluation_config_arn" not in kwargs:
+            kwargs["online_evaluation_config_arn"] = ""
+        if "start_time" not in kwargs:
+            kwargs["start_time"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "end_time" not in kwargs:
+            kwargs["end_time"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+
 def _serialize_spans(
     serializer: ShapeSerializer, schema: Schema, value: list[Document]
 ) -> None:
@@ -5058,6 +5143,28 @@ class AgentTracesConfigBatchEvaluation:
 
 
 @dataclass
+class AgentTracesConfigOnlineEvaluation:
+    """
+    Agent traces from an online evaluation configuration over a specified
+    time range.
+    """
+
+    value: OnlineEvaluationTraceConfig
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_AGENT_TRACES_CONFIG, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(
+            _SCHEMA_AGENT_TRACES_CONFIG.members["onlineEvaluation"], self.value
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=OnlineEvaluationTraceConfig.deserialize(deserializer))
+
+
+@dataclass
 class AgentTracesConfigUnknown:
     """
     Represents an unknown variant.
@@ -5085,6 +5192,7 @@ AgentTracesConfig = Union[
     AgentTracesConfigSessionSpans
     | AgentTracesConfigCloudwatchLogs
     | AgentTracesConfigBatchEvaluation
+    | AgentTracesConfigOnlineEvaluation
     | AgentTracesConfigUnknown
 ]
 """
@@ -5117,6 +5225,9 @@ class _AgentTracesConfigDeserializer:
 
             case 2:
                 self._set_result(AgentTracesConfigBatchEvaluation.deserialize(de))
+
+            case 3:
+                self._set_result(AgentTracesConfigOnlineEvaluation.deserialize(de))
 
             case _:
                 self._set_result(
@@ -10205,6 +10316,202 @@ UPDATE_BROWSER_STREAM = APIOperation(
         _SCHEMA_INTERNAL_SERVER_EXCEPTION,
         _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
         _SCHEMA_SERVICE_QUOTA_EXCEEDED_EXCEPTION,
+        _SCHEMA_THROTTLING_EXCEPTION,
+        _SCHEMA_VALIDATION_EXCEPTION,
+    ],
+)
+
+
+@dataclass(kw_only=True)
+class DeleteCapacityProviderSessionInput:
+    """Dataclass for DeleteCapacityProviderSessionInput structure."""
+
+    capacity_provider_id: str | None = None
+    """
+    The unique identifier of the capacity provider associated with the
+    session.
+    """
+
+    session_id: str | None = None
+    """The unique identifier of the capacity provider session to delete."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.capacity_provider_id is not None:
+            serializer.write_string(
+                _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_INPUT.members[
+                    "capacityProviderId"
+                ],
+                self.capacity_provider_id,
+            )
+
+        if self.session_id is not None:
+            serializer.write_string(
+                _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_INPUT.members["sessionId"],
+                self.session_id,
+            )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_id"] = de.read_string(
+                        _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_INPUT.members[
+                            "capacityProviderId"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["session_id"] = de.read_string(
+                        _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_INPUT.members[
+                            "sessionId"
+                        ]
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_INPUT, consumer=_consumer
+        )
+        return kwargs
+
+
+class CapacityProviderSessionStatus(UnknownEnumMixin, StrEnum):
+    PROVISIONING = "Provisioning"
+    DEPROVISIONING = "Deprovisioning"
+    ACTIVE = "Active"
+    DELETING = "Deleting"
+    DELETED = "Deleted"
+    STOPPED = "Stopped"
+
+
+@dataclass(kw_only=True)
+class DeleteCapacityProviderSessionOutput:
+    """Dataclass for DeleteCapacityProviderSessionOutput structure."""
+
+    capacity_provider_arn: str
+    """
+    The Amazon Resource Name (ARN) of the capacity provider associated with
+    the deleted session.
+    """
+
+    session_id: str
+    """The unique identifier of the deleted capacity provider session."""
+
+    status: CapacityProviderSessionStatus
+    """
+    The current status of the capacity provider session. When the status is
+    `Deleting`, the session is being deleted and is not available. When the
+    status is `Deleted`, the session is no longer available.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT.members[
+                "capacityProviderArn"
+            ],
+            self.capacity_provider_arn,
+        )
+        serializer.write_string(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT.members["sessionId"],
+            self.session_id,
+        )
+        serializer.write_string(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT.members["status"],
+            self.status,
+        )
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["capacity_provider_arn"] = de.read_string(
+                        _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT.members[
+                            "capacityProviderArn"
+                        ]
+                    )
+
+                case 1:
+                    kwargs["session_id"] = de.read_string(
+                        _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT.members[
+                            "sessionId"
+                        ]
+                    )
+
+                case 2:
+                    kwargs["status"] = CapacityProviderSessionStatus(
+                        de.read_string(
+                            _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT.members[
+                                "status"
+                            ]
+                        )
+                    )
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(
+            _SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT, consumer=_consumer
+        )
+        if "capacity_provider_arn" not in kwargs:
+            kwargs["capacity_provider_arn"] = ""
+        if "session_id" not in kwargs:
+            kwargs["session_id"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = CapacityProviderSessionStatus._corrected("")
+        return kwargs
+
+
+DELETE_CAPACITY_PROVIDER_SESSION = APIOperation(
+    input=DeleteCapacityProviderSessionInput,
+    output=DeleteCapacityProviderSessionOutput,
+    schema=_SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION,
+    input_schema=_SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_INPUT,
+    output_schema=_SCHEMA_DELETE_CAPACITY_PROVIDER_SESSION_OUTPUT,
+    error_registry=TypeRegistry(
+        {
+            ShapeID(
+                "com.amazonaws.bedrockagentcore#AccessDeniedException"
+            ): AccessDeniedException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcore#InternalServerException"
+            ): InternalServerException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcore#ResourceNotFoundException"
+            ): ResourceNotFoundException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcore#ThrottlingException"
+            ): ThrottlingException,
+            ShapeID(
+                "com.amazonaws.bedrockagentcore#ValidationException"
+            ): ValidationException,
+        }
+    ),
+    effective_auth_schemes=[ShapeID("aws.auth#sigv4")],
+    error_schemas=[
+        _SCHEMA_ACCESS_DENIED_EXCEPTION,
+        _SCHEMA_INTERNAL_SERVER_EXCEPTION,
+        _SCHEMA_RESOURCE_NOT_FOUND_EXCEPTION,
         _SCHEMA_THROTTLING_EXCEPTION,
         _SCHEMA_VALIDATION_EXCEPTION,
     ],

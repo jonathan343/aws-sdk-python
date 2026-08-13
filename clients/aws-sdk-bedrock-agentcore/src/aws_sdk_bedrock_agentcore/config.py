@@ -45,6 +45,8 @@ from .models import (
     DeleteABTestOutput,
     DeleteBatchEvaluationInput,
     DeleteBatchEvaluationOutput,
+    DeleteCapacityProviderSessionInput,
+    DeleteCapacityProviderSessionOutput,
     DeleteEventInput,
     DeleteEventOutput,
     DeleteMemoryRecordInput,
@@ -177,6 +179,12 @@ _ServiceInterceptor = Union[
     Interceptor[CreatePaymentSessionInput, CreatePaymentSessionOutput, Any, Any],
     Interceptor[DeleteABTestInput, DeleteABTestOutput, Any, Any],
     Interceptor[DeleteBatchEvaluationInput, DeleteBatchEvaluationOutput, Any, Any],
+    Interceptor[
+        DeleteCapacityProviderSessionInput,
+        DeleteCapacityProviderSessionOutput,
+        Any,
+        Any,
+    ],
     Interceptor[DeleteEventInput, DeleteEventOutput, Any, Any],
     Interceptor[DeleteMemoryRecordInput, DeleteMemoryRecordOutput, Any, Any],
     Interceptor[DeletePaymentInstrumentInput, DeletePaymentInstrumentOutput, Any, Any],
@@ -327,7 +335,12 @@ class Config:
     """
 
     transport: ClientTransport[Any, Any] | None
-    """The transport to use to send requests (e.g. an HTTP client)."""
+    """
+    The transport to use to send requests (e.g. an HTTP client). Operations
+    with bidirectional event streams require a DuplexClientTransport, such
+    as AWSCRTHTTPClient. Transports are assumed not to support duplex
+    streaming unless they explicitly set SUPPORTS_DUPLEX_STREAMING to True.
+    """
 
     user_agent_extra: str | None
     """Additional suffix to be added to the User-Agent header."""
